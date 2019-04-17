@@ -1,1 +1,0 @@
-// Account Routes to handle User Sign Up, Log In, and Log Out
