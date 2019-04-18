@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import HeaderBar from '../HeaderBar';
 
 export default class Board extends Component {
   
@@ -26,7 +27,18 @@ export default class Board extends Component {
   
   render() {
     return (
-        <h1>This is the Board page.</h1>
+        <div className="container-fluid px-0">
+          <HeaderBar 
+            backLocation="/b"
+            backText="All Boards"
+            centerText="This Board"
+            newLocation="/b/new"
+            newText="New Post"
+          />
+          <div className="container">
+            
+          </div>
+        </div>
     );
   }
 }

@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import { Link, Route, Switch} from 'react-router-dom';
 
 const styles = {
   root: {
@@ -21,27 +22,38 @@ const styles = {
   },
 };
 
-function ButtonAppBar(props) {
+function HeaderBar(props) {
   const { classes } = props;
+
+  if(props.newText) {
+
+  }
+
   return (
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" color="inherit" className={classes.grow}>
-            Board
+          { props.backText ? (
+            <Button component={Link} to={props.backLocation} color="inherit">
+              <i class="fas fa-chevron-left mr-1"></i>{props.backText}
+            </Button>
+          ) : <Button disabled></Button> }
+          <Typography variant="h3" color="inherit" className={classes.grow}>
+            {props.centerText}
           </Typography>
-          <Button color="inherit">Login</Button>
+          { props.newText ? (
+            <Button component={Link} to={props.newLocation} color="inherit">
+            <i class="fas fa-plus mr-1"></i>{props.newText}
+            </Button>
+          ) : <Button disabled></Button> }
         </Toolbar>
       </AppBar>
     </div>
   );
 }
 
-ButtonAppBar.propTypes = {
+HeaderBar.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(ButtonAppBar);
+export default withStyles(styles)(HeaderBar);

@@ -1,9 +1,21 @@
 import React, {Component} from 'react';
+import HeaderBar from './HeaderBar';
 
 export default class Landing extends Component {
     render() {
       return (
-          <h1>This is the Landing page.</h1>
+        <div className="container-fluid px-0">
+          <HeaderBar 
+            backLocation=""
+            backText=""
+            centerText="Welcome to Postr.Board"
+            newLocation=""
+            newText=""
+          />
+          <div className="container">
+          <a href="/b" className="btn btn-primary mt-5">View All Boards</a>
+          </div>
+        </div>
       );
     }
 }

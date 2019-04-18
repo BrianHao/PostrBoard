@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import BoardCard from './BoardCard';
+import HeaderBar from '../HeaderBar';
 
 export default class Boards extends Component {
   constructor(props){
@@ -44,26 +45,25 @@ export default class Boards extends Component {
           let currentBoard = this.state.boardsJson[i];
           boardsToDisplay.push(
             <BoardCard
-              key = {currentBoard._id}
-              boardName = {currentBoard.name}
-              boardTitle = {currentBoard.title}
-              boardDesc = {currentBoard.description}
-              boardImage = {currentBoard.image}
+              key={currentBoard._id} {...currentBoard}
             />
           );
         }
       }
 
       return (
-        <div className="container">
-          <div className="row pt-5">
-            <h1>Check out our Boards!</h1>
-          </div>
-          <div>
-            <a href="/b/new" className="btn btn-primary btn-sm">Create a New Board</a>
-          </div>
-          <div className="row pt-5" id="BoardCardsDisplay">
-          { boardsToDisplay.length > 0 ? boardsToDisplay : <div>No Boards to display!</div> }
+        <div className="container-fluid px-0">
+          <HeaderBar 
+            backLocation="/"
+            backText="Home"
+            centerText="All Boards"
+            newLocation="/b/new"
+            newText="New Board"
+          />
+          <div className="container">
+            <div className="row mt-5" id="BoardCardsDisplay">
+            { boardsToDisplay.length > 0 ? boardsToDisplay : <div>No Boards to display!</div> }
+            </div>
           </div>
         </div>
           
