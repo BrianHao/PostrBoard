@@ -1,26 +1,62 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, { Component } from "react";
+import { Router, Route, Link, Switch } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Landing from './Landing';
+import About from './About';
+import Signup from './Signup';
+import Login from './Login';
+import Navbar from './Navbar';
+import PageNotFound from './PageNotFound';
+import { Boards, Board, BoardNewForm, BoardEditForm } from './boards';
 import './App.css';
 
+
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.toggle = this.toggle.bind(this);
+    this.state = {
+      isOpen: false
+    };
+  }
+  toggle() {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  }
+  
+  logout() {
+    sessionStorage.clear();
+  }
+
   render() {
+    
+    let isLoggedIn = sessionStorage.getItem('loggedIn') === "true";
+
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <div className="postr-navbar container-fluid mx-0 px-0">
+          <Navbar />
+        </div>
+
+        <div className="main-content">
+          <Switch>
+            <Route exact={true} path="/" component={Landing}/>
+            <Route exact={true} path="/about" component={About}/>
+            <Route exact={true} path="/signup" component={Signup}/>
+            <Route exact={true} path="/login" component={Login}/>
+            <Route exact={true} path="/b" component={Boards}/>
+            <Route exact={true} path="/b/new" component={BoardNewForm}/>
+            <Route exact={true} path="/b/:boardName" component={Board}/>
+            <Route exact={true} path="/b/:boardName/edit" component={BoardEditForm}/>
+            {/**/}
+            <Route path="/*" component={PageNotFound}/>
+            
+            </Switch>
+        </div>
       </div>
+        
     );
   }
 }
