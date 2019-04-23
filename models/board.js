@@ -13,17 +13,25 @@ let boardSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    image: { 
+        type: String,
+        default: "https://vollrath.com/ClientCss/images/VollrathImages/No_Image_Available.jpg"
+    },
     description: String,
     created: {
         type: Date,
         default: Date.now
     },
-    author: {
+    creator: {
         id: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "User"
         },
         username: String
+    },
+    postCount: {
+        type: Number,
+        default: 0
     },
     posts: [
         {

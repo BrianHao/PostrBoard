@@ -11,6 +11,7 @@ export default class Landing extends Component {
             centerText="Welcome to Postr.Board"
             newLocation=""
             newText=""
+            color="primary"
           />
           <div className="container">
           <a href="/b" className="btn btn-primary mt-5">View All Boards</a>

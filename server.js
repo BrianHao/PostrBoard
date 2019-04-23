@@ -5,7 +5,8 @@ const express = require('express');
 			mongoose    = require("mongoose"),
 			passport = require("passport"),
 			LocalStrategy = require("passport-local"),
-			bodyParser = require('body-parser');
+			bodyParser = require('body-parser')
+			cors = require('cors');
 
 // Import Models
 const User = require('./models/user'),
@@ -35,9 +36,12 @@ mongoose.connect("mongodb://localhost:27017/postrdb",
 		 console.log('Successfully connected to mongodb');
 		 seedDB();
 });
+
+// app config
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(cors());
 
 // Passport Config
 app.use(expressSession(({
@@ -58,11 +62,11 @@ app.use(function(req, res, next){
 });
 
 // Use routes
-app.use("/", indexRoutes);
-app.use("/", authRoutes);
-app.use("/b", boardsRoutes);
-app.use("/b/:boardName", postsRoutes);
-app.use("/b/:boardName/:postId", commentsRoutes);
+app.use("/api/", indexRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/b", boardsRoutes);
+app.use("/api/b/:boardName", postsRoutes);
+app.use("/api/b/:boardName/:postId", commentsRoutes);
 
 // Start server
 app.listen(PORT, () => {

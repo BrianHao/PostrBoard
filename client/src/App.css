@@ -35,3 +35,7 @@
 body {
   background-color: #f4f7ff;
 }
+
+.headerButton:hover {
+  color:white;
+}

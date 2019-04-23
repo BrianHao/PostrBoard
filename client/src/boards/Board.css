@@ -1,16 +1,9 @@
-.thumbnail img {
-    width: 100%;
-}
-
-.thumbnail {
-    padding: 0;
-}
-
-.thumbnail .caption-full {
-    padding: 9px;
-}
-
-.BoardCardsDisplay {
+.boardCardsDisplay {
     display: flex; 
     flex-wrap: wrap;
+}
+
+.boardbutton:focus {
+    outline: 0;
+    box-shadow: none!important;
 }

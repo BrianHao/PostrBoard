@@ -1,9 +1,21 @@
 import React, {Component} from 'react';
+import HeaderBar from './HeaderBar';
 
 export default class Board extends Component {
     render() {
       return (
-          <h1>Error: Page not found.</h1>
+          <div className="container-fluid px-0">
+          <HeaderBar 
+            backLocation="/"
+            backText="Home"
+            centerText="Error: Page Not Found"
+            newLocation=""
+            newText=""
+            color="secondary"
+          />
+          <div className="container">
+          </div>
+        </div>
       );
     }
 }

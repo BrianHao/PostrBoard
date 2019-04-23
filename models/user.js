@@ -8,26 +8,7 @@ const UserSchema = new mongoose.Schema({
     created: {
         type: Date,
         default: Date.now
-    },
-    boards: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Board"
-        }
-    ],
-    posts: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Post"
-        }
-    ],
-    comments: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Comment"
-        }
-    ]
-
+    }
 });
 
 UserSchema.plugin(passportLocalMongoose);
