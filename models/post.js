@@ -16,16 +16,19 @@ let postSchema = new mongoose.Schema({
     updated: {
         type: Date
     },
+    boardName: String,
+    boardTitle: String,
     commentCount: {
         type: Number,
         default: 0
     },
     author: {
-        id: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "User"
-        },
-        username: String
+        // id: {
+        //     type: mongoose.Schema.Types.ObjectId,
+        //     ref: "User"
+        // },
+        type: String,
+        default: "Admin"
     },
     comments: [
         {

@@ -8,6 +8,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import './Board.css';
+import PostCard from '../posts/PostCard';
 
 export default class Board extends Component {
   
@@ -17,7 +18,7 @@ export default class Board extends Component {
 			name: "",
 			title: "",
 			description: "",
-			image: "",
+			image: ".", // To prevent "Material-UI: either `image` or `src` property must be specified" error
 			created: "",
 			creator: "",
 			posts: [],
@@ -48,7 +49,9 @@ export default class Board extends Component {
 					posts: body.foundBoard.posts
 				});
 			}).catch((err) => {
+				console.log("Error retrieving Board.")
 				console.log(err);
+				this.setState({ found: false });
 			});
 		});
 	}
@@ -65,12 +68,27 @@ export default class Board extends Component {
 				//console.log("Succesfully deleted board");
 				this.setState({ deleted: true });
 			}
-		}).catch((e) => {
-			console.log(e);
+		}).catch((err) => {
+			console.log("Error deleting Board.")
+			console.log(err);
 		})
 	}
   
   render() {
+
+		let postsList = [];
+
+      if (this.state.posts.length > 0) {
+        for(let i = 0; i < this.state.posts.length; i++) {
+          let currentPost = this.state.posts[i];
+          postsList.push(
+            <PostCard
+              key={currentPost._id} {...currentPost}
+            />
+          );
+        }
+      }
+
 		if(!this.state.found){
 			return <Redirect to={{
 				pathname: "/pagenotfound"
@@ -90,6 +108,7 @@ export default class Board extends Component {
 		};
 
 		let editUrl = "/b/" + this.state.name + "/edit";
+		let newPostUrl = "/b/" + this.state.name + "/new";
 
     return (
         <div className="container-fluid px-0">
@@ -97,7 +116,7 @@ export default class Board extends Component {
             backLocation="/b"
             backText="All Boards"
             centerText={this.state.title}
-            newLocation="/b/new"
+            newLocation={newPostUrl}
             newText="New Post"
 						color="primary"
           />
@@ -112,27 +131,28 @@ export default class Board extends Component {
 							<CardContent className="col-sm-9 text-left pb-0">
 								<Typography gutterBottom variant="h5" component="h2">
 									{this.state.description}
-							</Typography>
+								</Typography>
 								<Typography component="p">
 									<strong>Created by:</strong> {this.state.creator}
 								</Typography>
 								<Typography component="p">
 									<strong>Created on:</strong> {Moment(this.state.created).format('MMMM Do YYYY, h:mm:ss a')}
 								</Typography>
-								<CardActions >
-									<a href={editUrl} className="btn btn-sm btn-outline-info boardbutton">
+								<CardActions className="px-0 pb-0">
+									<a href={editUrl} className="btn btn-sm btn-outline-info boardbutton mx-0">
 										<i className="far fa-edit mr-1"></i> Edit Board
 									</a>
 									<button type="button" className="btn btn-sm btn-outline-danger boardbutton"
 										onClick={() => this.deleteBoard()}>
-										<i className="far fa-trash-alt mr-1"></i> Delete Board
+										<i className="far fa-trash-alt"></i> Delete Board
 									</button>
 								</CardActions>
 								</CardContent>
 							</div>
 								<hr/>
-								{// POSTS GO HERE
-								}
+								<div className="text-left">
+									{ postsList.length > 0 ? postsList : <div className="text-center pb-3">No Posts to display!</div> }
+								</div>
     				</Card>
         </div>
     );

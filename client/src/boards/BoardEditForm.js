@@ -32,7 +32,8 @@ class BoardNewForm extends React.Component {
       oldTitle: "",
       description: "",
       image: "",
-      edited: false
+      edited: false,
+      found: true
     }
     
     componentWillMount(){
@@ -55,7 +56,9 @@ class BoardNewForm extends React.Component {
             image: body.foundBoard.image
           });
         }).catch((err) => {
+          console.log("Error retrieving Board.")
           console.log(err);
+          this.setState({ found: false });
         });
       });
     }
@@ -88,9 +91,10 @@ class BoardNewForm extends React.Component {
         if(body.edited) {
           this.setState({ edited: true });
         }
-		}).catch((e) => {
-			console.log("Error creating new board");
-		})
+		}).catch((err) => {
+      console.log("Error editing Board.")
+			console.log(err);
+		});
   }
   
     render() {
@@ -101,13 +105,19 @@ class BoardNewForm extends React.Component {
           }} />;
       }
 
+      if(!this.state.found){
+        return <Redirect to={{
+          pathname: "/pagenotfound"
+          }} />;
+      }
+
       let backUrl = "/b/" + this.state.name;
       
       return (
         <div className="container-fluid px-0">
           <HeaderBar 
             backLocation={backUrl}
-            backText={this.state.oldTitle}
+            backText={backUrl}
             centerText="Edit Board"
             newLocation=""
             newText=""

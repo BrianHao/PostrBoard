@@ -8,6 +8,7 @@ import Login from './Login';
 import Navbar from './Navbar';
 import PageNotFound from './PageNotFound';
 import { Boards, Board, BoardNewForm, BoardEditForm } from './boards';
+import { Post, PostNewForm, PostEditForm } from './posts';
 import './App.css';
 
 
@@ -50,7 +51,9 @@ class App extends Component {
             <Route exact={true} path="/b/new" component={BoardNewForm}/>
             <Route exact={true} path="/b/:boardName" component={Board}/>
             <Route exact={true} path="/b/:boardName/edit" component={BoardEditForm}/>
-            {/**/}
+            <Route exact={true} path="/b/:boardName/new" component={PostNewForm}/>
+            <Route exact={true} path="/b/:boardName/:postId" component={Post}/>
+            <Route exact={true} path="/b/:boardName/:postId/edit" component={PostEditForm}/>
             <Route path="/*" component={PageNotFound}/>
             
             </Switch>

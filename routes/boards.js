@@ -3,6 +3,7 @@ const express = require("express");
 const router = express.Router({mergeParams: true});
 const Board = require("../models/board");
 const Post = require("../models/post");
+const Comment = require("../models/comment");
 const middleware = require("../middleware");
 
 // INDEX Route - Shows list of all boards
@@ -10,6 +11,7 @@ router.get("/", (req, res) => {
     Board.find({}, (err, foundBoards) => {
         if(err) {
             console.log(err);
+            res.send(err);
         } else {
             res.json({
                 foundBoards
@@ -35,7 +37,8 @@ router.post("/", (req, res) => {
                     message: "Error: Board with name \"" + req.body.boardName + "\" already exists.",
                 });
             } else {
-                res.send(err);
+                console.log(err);
+            res.send(err);
             }
         } else {
             res.json({
@@ -48,9 +51,11 @@ router.post("/", (req, res) => {
 
 // SHOW Route - Display page for a specific Board
 router.get("/:boardName", (req, res) => {
-    Board.findOne({name: req.params.boardName}, (err, foundBoard) => {
+    Board.findOne({name: req.params.boardName}).populate("posts").exec(
+        (err, foundBoard) => {
         if(err) {
             console.log(err);
+            res.send(err);
         } else {
             res.json({
                 foundBoard

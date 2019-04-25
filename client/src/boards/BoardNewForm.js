@@ -31,7 +31,7 @@ class BoardNewForm extends React.Component {
       title: "",
       description: "",
       image: "",
-      dup: false,
+      error: false,
 		}
 
   handleChange = name => event => {
@@ -42,32 +42,37 @@ class BoardNewForm extends React.Component {
   
 
   submit = () => {
-    let tempImage = this.state.image === "" ? "https://vollrath.com/ClientCss/images/VollrathImages/No_Image_Available.jpg" : this.state.image ;
-    let url = 'http://localhost:5000/api/b';
-    fetch(url, {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json; charset=utf-8",
-			},
-			body: JSON.stringify({
-        boardName: this.state.name,
-        boardTitle: this.state.title,
-        boardImage: tempImage,
-				boardDescription: this.state.description,
-			}),
-		}).then(response => {
-			if(response.status === 200){
-				return response.json();
-			}
-		}).then(body => {
-        if(body.created) {
-          this.setState({ created: true });
-        } else {
-          this.setState({ dup: true });
+    if(this.state.name === "") {
+      this.setState({ error: true });
+    } else {
+      let tempImage = this.state.image === "" ? "https://vollrath.com/ClientCss/images/VollrathImages/No_Image_Available.jpg" : this.state.image ;
+      let url = 'http://localhost:5000/api/b';
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json; charset=utf-8",
+        },
+        body: JSON.stringify({
+          boardName: this.state.name,
+          boardTitle: this.state.title,
+          boardImage: tempImage,
+          boardDescription: this.state.description,
+        }),
+      }).then(response => {
+        if(response.status === 200){
+          return response.json();
         }
-		}).catch((e) => {
-			console.log(e);
-		})
+      }).then(body => {
+          if(body.created) {
+            this.setState({ created: true });
+          } else {
+            this.setState({ error: true });
+          }
+      }).catch((err) => {
+            console.log("Error creating Board.")
+            console.log(err);
+      })
+    }
 	}
   
     render() {
@@ -96,11 +101,11 @@ class BoardNewForm extends React.Component {
               style={{ margin: 8 }}
               margin="normal"
               label="Name"
-              helperText={ this.state.dup ? "This board name already exists! Enter a different board name." : 
+              helperText={ this.state.error ? "Board name cannot be empty or duplicate of an existing board name. Please enter a vaild board name." : 
               "This is the name for your board and cannot be changed. It should be a single word in all lowercase. (eg. technology)"}
               value={this.state.name}
               onChange={this.handleChange('name')}
-              error={this.state.dup}
+              error={this.state.error}
               required
             />
 

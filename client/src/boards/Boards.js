@@ -26,6 +26,7 @@ export default class Boards extends Component {
       this.setState({ boards: body.foundBoards });
       //console.log(this.state.boardsJson);
 		}).catch((err) => {
+			console.log("Error retrieving Boards.")
 			console.log(err);
     });
 	}
@@ -55,8 +56,8 @@ export default class Boards extends Component {
             color="primary"
           />
           <div className="container">
-            <div className="row mt-5" id="boardCardsDisplay">
-            { boardsToDisplay.length > 0 ? boardsToDisplay : <div>No Boards to display!</div> }
+            <div className="row mt-3" id="boardCardsDisplay">
+            { boardsToDisplay.length > 0 ? boardsToDisplay : <div className="text-center">No Boards to display!</div> }
             </div>
           </div>
         </div>
