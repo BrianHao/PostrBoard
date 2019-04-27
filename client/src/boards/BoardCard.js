@@ -37,7 +37,7 @@ function MediaCard(props) {
           <Typography gutterBottom color="primary" variant="h6" component="h2">
             {props.title}
           </Typography>
-          <Typography variant="body1" noWrap component="p">
+          <Typography variant="body1" component="p">
             {props.description}
           </Typography>
         </CardContent>

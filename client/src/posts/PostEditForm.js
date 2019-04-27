@@ -84,6 +84,7 @@ class PostNewForm extends React.Component {
 				"Content-Type": "application/json; charset=utf-8",
 			},
 			body: JSON.stringify({
+        postTitle: this.state.postTitle,
         postLink: this.state.postLink,
         postText: this.state.postText
 			}),
@@ -137,11 +138,10 @@ class PostNewForm extends React.Component {
               margin="normal"
               label="Title"
               helperText={ this.state.error ? "Post title cannot be empty." : 
-              "This the title of your post. It should be short and concise, and cannot be edited."}
+              "This the title of your post. It should be short and concise."}
               value={this.state.postTitle}
-              onChange={this.handleChange('title')}
+              onChange={this.handleChange('postTitle')}
               error={this.state.error}
-              disabled
             />
 
             <TextField

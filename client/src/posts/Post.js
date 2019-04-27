@@ -8,6 +8,8 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Link from '@material-ui/core/Link';
 import './Post.css';
+import CommentCreateForm from './CommentCreate';
+import Comment from "./Comment";
 
 export default class Post extends Component {
   
@@ -106,7 +108,20 @@ export default class Post extends Component {
 			return <Redirect to={{
 				pathname: "/b/" + this.state.postBoard
 				}} />;
-		}
+    }
+    
+    if (this.state.postComments.length > 0) {
+      for(let i = 0; i < this.state.postComments.length; i++) {
+        let currentComment = this.state.postComments[i];
+        commentsList.push(
+          <Comment
+            key={currentComment._id} {...currentComment}
+          />
+        );
+      }
+    }
+
+    
 
 		let editUrl = "/b/" + this.state.postBoard + "/" + this.state.postId + "/edit";
     let boardName = "/b/" + this.state.postBoard;
@@ -153,7 +168,14 @@ export default class Post extends Component {
 								</CardActions>
 								</CardContent>
 							</div>
-								<hr/>
+								<hr className="mb-0" />
+                <div>
+                  <CommentCreateForm 
+                  boardName={this.state.boardName}
+                  postId={this.state.postId}
+                  />
+                </div>
+                <hr className="mt-1" />
 								<div className="text-left">
                 { commentsList.length > 0 ? commentsList : <div className="text-center pb-3">No Comments to display!</div> }
 								</div>

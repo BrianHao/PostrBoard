@@ -62,11 +62,11 @@ router.get("/:postId", (req, res) => {
 // UPDATE Route - Updates Post information
 router.put("/:postId", (req, res) => {
     let editPost = {
+        title: req.body.postTitle,
         link: req.body.postLink,
         text: req.body.postText,
         updated: new Date().toISOString()
     };
-    console.log(editPost);
     Post.findByIdAndUpdate(req.params.postId, editPost, (err, updatedPost) => {
         if(err){
             console.log(err);

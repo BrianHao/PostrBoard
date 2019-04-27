@@ -136,7 +136,7 @@ class PostNewForm extends React.Component {
               margin="normal"
               label="Title"
               helperText={ this.state.error ? "Post title cannot be empty." : 
-              "This the title of your post. It should be short and concise, and cannot be edited."}
+              "This the title of your post. It should be short and concise."}
               value={this.state.title}
               onChange={this.handleChange('title')}
               error={this.state.error}
