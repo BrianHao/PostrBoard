@@ -6,6 +6,7 @@ import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import './Board.css';
+import Card from '@material-ui/core/Card';
 
 const styles = theme => ({
   container: {
@@ -124,11 +125,10 @@ class BoardNewForm extends React.Component {
             color="primary"
           />
 
-          <div className="container newBoardForm my-5">
+          <Card raised="true" className="container newBoardForm my-5 p-5">
             <TextField
               id="standard-full-width"
               fullWidth
-              style={{ margin: 8 }}
               margin="normal"
               label="Name"
               disabled
@@ -143,7 +143,6 @@ class BoardNewForm extends React.Component {
             <TextField
               id="standard-full-width"
               fullWidth
-              style={{ margin: 8 }}
               margin="normal"
               label="Title"
               helperText="This is the title for your board. It should be short
@@ -156,7 +155,6 @@ class BoardNewForm extends React.Component {
             <TextField
               id="standard-full-width"
               fullWidth
-              style={{ margin: 8 }}
               margin="normal"
               label="Image"
               helperText="You may set an image for your board as its identity. 
@@ -170,7 +168,6 @@ class BoardNewForm extends React.Component {
               multiline
               fullWidth
               rows="4"
-              style={{ margin: 8 }}
               margin="normal"
               label="Description"
               helperText="You may provide a short description of your board."
@@ -184,7 +181,7 @@ class BoardNewForm extends React.Component {
               </Button>
             </div>
 
-          </div>
+          </Card>
         </div>
           
       );

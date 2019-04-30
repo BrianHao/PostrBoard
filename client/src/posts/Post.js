@@ -93,7 +93,7 @@ export default class Post extends Component {
 			console.log("Error deleting Post.")
 			console.log(err);
 		})
-	}
+  }
   
   render() {
     let commentsList = [];
@@ -113,9 +113,11 @@ export default class Post extends Component {
     if (this.state.postComments.length > 0) {
       for(let i = 0; i < this.state.postComments.length; i++) {
         let currentComment = this.state.postComments[i];
-        commentsList.push(
+        commentsList.unshift(
           <Comment
             key={currentComment._id} {...currentComment}
+            boardName={this.state.postBoard}
+            postId={this.state.postId}
           />
         );
       }
@@ -137,13 +139,13 @@ export default class Post extends Component {
 			      color="primary"
           />
 
-          <Card className="container mx-auto m-3">
+          <Card raised="true" className="container mx-auto m-3">
 						<div className="row">
 							<CardContent className="text-left pb-0 col-sm-12">
 						    <Typography gutterBottom color="primary" variant="h4" component="h2">
 									{this.state.postTitle}
 								</Typography>
-                <Typography gutterBottom variant="caption" component="h2">
+                <Typography gutterBottom variant="h6" component="h2">
 									Link: {this.state.postLink ? <Link href={this.state.postLink} target="_blank">
                     {this.state.postLink} </Link> : "None provided."}
 								</Typography>
@@ -175,7 +177,7 @@ export default class Post extends Component {
                   postId={this.state.postId}
                   />
                 </div>
-                <hr className="mt-1" />
+                <hr className="mt-2" />
 								<div className="text-left">
                 { commentsList.length > 0 ? commentsList : <div className="text-center pb-3">No Comments to display!</div> }
 								</div>

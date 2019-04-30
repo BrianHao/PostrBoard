@@ -81,7 +81,7 @@ export default class Board extends Component {
       if (this.state.posts.length > 0) {
         for(let i = 0; i < this.state.posts.length; i++) {
           let currentPost = this.state.posts[i];
-          postsList.push(
+          postsList.unshift(
             <PostCard
               key={currentPost._id} {...currentPost}
             />
@@ -121,7 +121,7 @@ export default class Board extends Component {
 						color="primary"
           />
 
-					<Card className="container mx-auto m-3">
+					<Card raised="true" className="container mx-auto m-3">
 						<div className="row">
 							<CardMedia
 								className="col-sm-3"
@@ -138,7 +138,7 @@ export default class Board extends Component {
 								<Typography component="p">
 									<strong>Created on:</strong> {Moment(this.state.created).format('MMMM Do YYYY, h:mm:ss a')}
 								</Typography>
-								{ this.state.creator !== "Admin" ? 
+								{ this.state.creator !== "Admin.s" ? 
 								<CardActions className="px-0 pb-0">
 									<a href={editUrl} className="btn btn-sm btn-outline-info boardbutton mx-0">
 										<i className="far fa-edit mr-1"></i> Edit Board

@@ -13,8 +13,22 @@ const styles = {
       },
 };
 
-function deleteComment (){
-    // comment deletion
+function deleteComment(props){
+    let url = 'http://localhost:5000/api/b/' + props.boardName + "/" + props.postId + "/" + props._id;
+		fetch(url, {
+			method: "DELETE",
+			headers: {
+				"Content-Type": "application/json; charset=utf-8",
+			},
+		}).then(response => {
+			if(response.status === 200){
+				//console.log("Succesfully deleted comment");
+				window.location.reload();
+			}
+		}).catch((err) => {
+			console.log("Error deleting Comment.")
+			console.log(err);
+		})
 }
 
 function MediaCard(props) {
@@ -30,7 +44,7 @@ function MediaCard(props) {
                 </Typography>
                 <Typography inline className="float-right" color="default" variant="body1" component="h2" >
                     <button type="button" className="btn btn-sm btn-outline-danger boardbutton p-0 m-1"
-						onClick={() => deleteComment()}>
+						onClick={() => deleteComment(props)}>
 							<i className="fas fa-times mx-1"></i>
 					</button>
                 </Typography>

@@ -6,6 +6,8 @@ import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import './Post.css';
+import Card from '@material-ui/core/Card';
+
 
 const styles = theme => ({
   container: {
@@ -128,11 +130,10 @@ class PostNewForm extends React.Component {
             color="primary"
           />
 
-          <div className="container newBoardForm my-5">
+          <Card raised="true" className="container newBoardForm my-5 p-5">
             <TextField
               id="standard-full-width"
               fullWidth
-              style={{ margin: 8 }}
               margin="normal"
               label="Title"
               helperText={ this.state.error ? "Post title cannot be empty." : 
@@ -146,7 +147,6 @@ class PostNewForm extends React.Component {
             <TextField
               id="standard-full-width"
               fullWidth
-              style={{ margin: 8 }}
               margin="normal"
               label="Link"
               helperText="You may provide an external link that is relevant to your post."
@@ -159,7 +159,6 @@ class PostNewForm extends React.Component {
               multiline
               fullWidth
               rows="4"
-              style={{ margin: 8 }}
               margin="normal"
               label="Text"
               helperText="This is the main body for your post."
@@ -173,7 +172,7 @@ class PostNewForm extends React.Component {
               </Button>
             </div>
 
-          </div>
+          </Card>
         </div>
           
       );

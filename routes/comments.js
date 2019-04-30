@@ -12,7 +12,6 @@ router.post("/", (req, res) => {
     let newComment = {
         text: req.body.comment
     };
-
     Post.findById(req.params.postId, (err, foundPost) => {
         if(err) {
             console.log("Error retrieving Post.")
@@ -33,6 +32,29 @@ router.post("/", (req, res) => {
                         created: true,
                         message: "Successfully created Comment.",
                         id: createdComment._id
+                    });
+                }
+            });
+        }
+    });
+});
+
+// COMMENT DELETE ROUTE - Deletes a comment
+router.delete("/:commentId", (req, res) => {
+    Comment.findByIdAndDelete(req.params.commentId, (err) => {
+        if(err){
+            console.log(err);
+            res.send(err);
+        } else {
+            Post.findById(req.params.postId, (err, foundPost) => {
+                if(err) {
+                    console.log("Error retrieving Post.")
+                    console.log(err);
+                } else {
+                    foundPost.postCount = foundPost.postCount-1;
+                    foundPost.save();
+                    res.json({
+                        deleted: true,
                     });
                 }
             });
