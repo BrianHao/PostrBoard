@@ -10,7 +10,8 @@ module.exports = router;
 // COMMENT POST ROUTE - Creates a new comment
 router.post("/", (req, res) => {
     let newComment = {
-        text: req.body.comment
+        text: req.body.comment,
+        postId: req.body.postId
     };
     Post.findById(req.params.postId, (err, foundPost) => {
         if(err) {
@@ -27,7 +28,7 @@ router.post("/", (req, res) => {
                     foundPost.comments.push(createdComment);
                     foundPost.commentCount = foundPost.commentCount+1;
                     foundPost.save();
-                    console.log(createdComment);
+                    //console.log(createdComment);
                     res.json({
                         created: true,
                         message: "Successfully created Comment.",
@@ -51,7 +52,7 @@ router.delete("/:commentId", (req, res) => {
                     console.log("Error retrieving Post.")
                     console.log(err);
                 } else {
-                    foundPost.postCount = foundPost.postCount-1;
+                    foundPost.commentCount = foundPost.commentCount-1;
                     foundPost.save();
                     res.json({
                         deleted: true,

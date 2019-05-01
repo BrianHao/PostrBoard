@@ -22,7 +22,7 @@ function MediaCard(props) {
 
   return (
       <div className="col-sm-6 col-md-4 col-lg-3 my-3">
-      <Card raised="true">
+      <Card raised>
           <Link to={{
           pathname: "/b/" + props.name, 
           state: {boardName: props.name}

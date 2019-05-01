@@ -139,7 +139,7 @@ export default class Post extends Component {
 			      color="primary"
           />
 
-          <Card raised="true" className="container mx-auto m-3">
+          <Card raised className="container mx-auto m-3">
 						<div className="row">
 							<CardContent className="text-left pb-0 col-sm-12">
 						    <Typography gutterBottom color="primary" variant="h4" component="h2">

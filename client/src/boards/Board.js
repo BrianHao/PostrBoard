@@ -121,7 +121,7 @@ export default class Board extends Component {
 						color="primary"
           />
 
-					<Card raised="true" className="container mx-auto m-3">
+					<Card raised className="container mx-auto m-3">
 						<div className="row">
 							<CardMedia
 								className="col-sm-3"

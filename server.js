@@ -34,7 +34,7 @@ mongoose.connect("mongodb://localhost:27017/postrdb",
 	(err) => {
 		if (err) throw err;
 		 console.log('Successfully connected to mongodb');
-		 //seedDB();
+		 seedDB();
 });
 
 // app config

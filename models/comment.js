@@ -20,7 +20,8 @@ let commentSchema = new mongoose.Schema({
         // },
         type: String,
         default: "Admin"
-    }
+    },
+    postId: String
 });
 
 module.exports = mongoose.model("Comment", commentSchema);

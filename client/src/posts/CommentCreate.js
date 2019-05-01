@@ -22,6 +22,7 @@ class CommentCreateForm extends React.Component {
                 },
                 body: JSON.stringify({
                     comment: this.state.comment,
+                    postId: this.props.postId
                 }),
             }).then(response => {
                 if (response.status === 200){

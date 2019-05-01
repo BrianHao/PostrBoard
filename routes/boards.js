@@ -87,16 +87,32 @@ router.put("/:boardName", (req, res) => {
 // DESTROY Route - Deletes Board and all its associated posts, 
 //                  and the posts' associated comments
 router.delete("/:boardName", (req, res) => {
-    Board.findOneAndDelete({name: req.params.boardName}, (err) => {
+    Board.findOneAndRemove({name: req.params.boardName}, (err, removedBoard) => {
         if(err){
             console.log(err);
             res.send(err);
         } else {
-            //console.log(updatedBoard);
-            res.json({
-                deleted: true,
-            });
+            let posts = removedBoard.posts;
+            posts.forEach((post) => {
+                Post.findByIdAndRemove(post, (err, removedPost) => {
+                    if(err){
+                        console.log(err);
+                        res.send(err);
+                    } else {
+                        Comment.deleteMany( {_id: { $in: removedPost.comments } }, (err) => {
+                            if (err) {
+                                console.log(err);
+                                res.send(err);
+                            }
+                        });
+                    }
+                });
+            })
         }
+    }).then(()=> {
+        res.json({
+            deleted: true,
+        });
     });
 });
 

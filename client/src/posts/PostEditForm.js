@@ -132,7 +132,7 @@ class PostNewForm extends React.Component {
             color="primary"
           />
 
-          <Card raised="true" className="container newBoardForm my-5 p-5">
+          <Card raised className="container newBoardForm my-5 p-5">
             <TextField
               id="standard-full-width"
               fullWidth

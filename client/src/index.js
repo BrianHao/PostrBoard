@@ -8,7 +8,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'typeface-roboto';
 
 ReactDOM.render(
-    <BrowserRouter>
+    <BrowserRouter
+    forceRefresh>
 		<App />
 	</BrowserRouter>
     , document.getElementById('root')

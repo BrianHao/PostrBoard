@@ -83,20 +83,27 @@ router.put("/:postId", (req, res) => {
 
 // DESTROY Route - Deletes Post
 router.delete("/:postId", (req, res) => {
-    Post.findByIdAndDelete(req.params.postId, (err) => {
+    Post.findByIdAndRemove(req.params.postId, (err, removedPost) => {
         if(err){
             console.log(err);
             res.send(err);
         } else {
-            Board.findOne({name: req.params.boardName}, (err, foundBoard) => {
-                if(err) {
-                    console.log("Error retrieving Board.")
+            Comment.deleteMany( {_id: { $in: removedPost.comments } }, (err) => {
+                if (err) {
                     console.log(err);
+                    res.send(err);
                 } else {
-                    foundBoard.postCount = foundBoard.postCount-1;
-                    foundBoard.save();
-                    res.json({
-                        deleted: true,
+                    Board.findOne({name: req.params.boardName}, (err, foundBoard) => {
+                        if(err) {
+                            console.log("Error retrieving Board.")
+                            console.log(err);
+                        } else {
+                            foundBoard.postCount = foundBoard.postCount-1;
+                            foundBoard.save();
+                            res.json({
+                                deleted: true,
+                            });
+                        }
                     });
                 }
             });
