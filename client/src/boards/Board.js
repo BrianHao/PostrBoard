@@ -9,6 +9,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import './Board.css';
 import PostCard from '../posts/PostCard';
+import Navbar from '../Navbar';
 
 export default class Board extends Component {
   
@@ -40,12 +41,13 @@ export default class Board extends Component {
 				//console.log("Successfully retrieved Board.");
 				return response.json();
 			}).then(body => {
+				let creator = (body.foundBoard.creator === undefined) ? "Admin" : body.foundBoard.creator.username;
 				this.setState({ 
 					title: body.foundBoard.title,
 					description: body.foundBoard.description,
 					image: body.foundBoard.image,
 					created: body.foundBoard.created,
-					creator: body.foundBoard.creator,
+					creator: creator,
 					posts: body.foundBoard.posts
 				});
 			}).catch((err) => {
@@ -112,6 +114,7 @@ export default class Board extends Component {
 
     return (
         <div className="container-fluid px-0">
+					<Navbar/>
           <HeaderBar 
             backLocation="/b"
             backText="All Boards"
@@ -133,12 +136,12 @@ export default class Board extends Component {
 									{this.state.description}
 								</Typography>
 								<Typography component="p">
-									<strong>Created by:</strong> {this.state.creator}
+									<strong>Created by:</strong> {this.state.creator === undefined ? "Admin" : this.state.creator}
 								</Typography>
 								<Typography component="p">
 									<strong>Created on:</strong> {Moment(this.state.created).format('MMMM Do YYYY, h:mm:ss a')}
 								</Typography>
-								{ this.state.creator !== "Admin.s" ? 
+								{ this.state.creator === sessionStorage.getItem('username') ? 
 								<CardActions className="px-0 pb-0">
 									<a href={editUrl} className="btn btn-sm btn-outline-info boardbutton mx-0">
 										<i className="far fa-edit mr-1"></i> Edit Board

@@ -15,7 +15,11 @@ router.post("/", (req, res) => {
         link: req.body.postLink,
         text: req.body.postText,
         boardName: req.body.boardName,
-        boardTitle: req.body.boardTitle
+        boardTitle: req.body.boardTitle,
+        author: {
+            id: req.body.id,
+            username: req.body.username
+        }
     };
 
     Board.findOne({name: req.params.boardName}, (err, foundBoard) => {

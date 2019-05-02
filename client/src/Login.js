@@ -59,7 +59,7 @@ class Login extends React.Component {
         }),
       }).then(response => {
         if(response.status === 200){
-          console.log("Correct Credentials");
+          //console.log("Correct Credentials");
           return response.json();
         } 
       }).then(body => {
@@ -68,9 +68,8 @@ class Login extends React.Component {
         sessionStorage.setItem('id', body.id);
         sessionStorage.setItem('username', body.username);
         sessionStorage.setItem('loggedIn', "true");
-        if (sessionStorage.getItem('loggedIn')){
-          this.setState({ isloggedIn: true });
-        }
+      }).then(()=> {
+        this.props.history.push("/");
       }).catch(() => {
         console.log("Wrong Credentials");
       })    

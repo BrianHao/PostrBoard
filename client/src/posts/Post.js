@@ -10,6 +10,7 @@ import Link from '@material-ui/core/Link';
 import './Post.css';
 import CommentCreateForm from './CommentCreate';
 import Comment from "./Comment";
+import Navbar from '../Navbar';
 
 export default class Post extends Component {
   
@@ -52,7 +53,7 @@ export default class Post extends Component {
                     postCreated: body.foundPost.created,
                     postUpdated: body.foundPost.updated,
                     postComments: body.foundPost.comments,
-                    postAuthor: body.foundPost.author,
+                    postAuthor: body.foundPost.author.username,
                     foundBoard: body.foundPost.boardName,
                     boardTitle: body.foundPost.boardTitle,
                 },
@@ -130,6 +131,7 @@ export default class Post extends Component {
 
     return (
         <div className="container-fluid px-0">
+          <Navbar/>
           <HeaderBar 
             backLocation={boardName}
             backText={boardName}
@@ -159,6 +161,7 @@ export default class Post extends Component {
                 </Typography>
                 { this.state.postUpdated ? <Typography variant="caption" component="h2"><em>Edited: {Moment(this.state.postUpdated).format('MMMM Do YYYY, h:mm:ss A')}</em></Typography>
                 : "" }
+                { this.state.postAuthor === sessionStorage.getItem('username') ? 
 								<CardActions className="px-0 pb-0">
 									<a href={editUrl} className="btn btn-sm btn-outline-info boardbutton mx-0">
 										<i className="far fa-edit mr-1"></i> Edit Post
@@ -168,6 +171,7 @@ export default class Post extends Component {
 										<i className="far fa-trash-alt mr-1"></i> Delete Post
 									</button>
 								</CardActions>
+                : "" }
 								</CardContent>
 							</div>
 								<hr className="mb-0" />

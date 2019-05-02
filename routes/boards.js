@@ -26,9 +26,12 @@ router.post("/", (req, res) => {
         name: req.body.boardName,
         title: req.body.boardTitle,
         image: req.body.boardImage,
-        description: req.body.boardDescription
-    };  
-
+        description: req.body.boardDescription,
+        creator: {
+            id: req.body.id,
+            username: req.body.username
+        }
+    };
     Board.create(newBoard, (err, createdBoard) => {
         if(err){
             if(err.code == 11000) {
@@ -92,22 +95,24 @@ router.delete("/:boardName", (req, res) => {
             console.log(err);
             res.send(err);
         } else {
-            let posts = removedBoard.posts;
-            posts.forEach((post) => {
-                Post.findByIdAndRemove(post, (err, removedPost) => {
-                    if(err){
-                        console.log(err);
-                        res.send(err);
-                    } else {
-                        Comment.deleteMany( {_id: { $in: removedPost.comments } }, (err) => {
-                            if (err) {
-                                console.log(err);
-                                res.send(err);
-                            }
-                        });
-                    }
-                });
-            })
+            if(removedBoard.posts){
+                let posts = removedBoard.posts;
+                posts.forEach((post) => {
+                    Post.findByIdAndRemove(post, (err, removedPost) => {
+                        if(err){
+                            console.log(err);
+                            res.send(err);
+                        } else {
+                            Comment.deleteMany( {_id: { $in: removedPost.comments } }, (err) => {
+                                if (err) {
+                                    console.log(err);
+                                    res.send(err);
+                                }
+                            });
+                        }
+                    });
+                })
+            }
         }
     }).then(()=> {
         res.json({

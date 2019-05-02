@@ -23,12 +23,11 @@ let boardSchema = new mongoose.Schema({
         default: Date.now
     },
     creator: {
-        // id: {
-        //     type: mongoose.Schema.Types.ObjectId,
-        //     ref: "User"
-        // },
-        type: String,
-        default: "Admin"
+        id: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User"
+        },
+        username: String
     },
     postCount: {
         type: Number,

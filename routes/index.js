@@ -2,11 +2,21 @@ const express = require("express");
 const router = express.Router({mergeParams: true});
 const passport = require("passport");
 const User = require("../models/user");
+const Post = require("../models/post");
 const middleware = require("../middleware");
 
 // Landing Page for Postr
 router.get("/", (req, res) => {
-    res.send("Welcome to Postr!");
+    Post.find({}).limit(20).exec((err, foundPosts) => {
+        if(err) {
+            console.log(err);
+            res.send(err);
+        } else {
+            res.json({
+                foundPosts
+            });
+        }
+    });
 });
 
 // Sign up logic

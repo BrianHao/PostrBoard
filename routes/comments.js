@@ -11,7 +11,11 @@ module.exports = router;
 router.post("/", (req, res) => {
     let newComment = {
         text: req.body.comment,
-        postId: req.body.postId
+        postId: req.body.postId,
+        author: {
+            id: req.body.id,
+            username: req.body.username
+        }
     };
     Post.findById(req.params.postId, (err, foundPost) => {
         if(err) {

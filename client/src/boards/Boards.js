@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import BoardCard from './BoardCard';
 import HeaderBar from '../HeaderBar';
 import './Board.css';
+import Navbar from '../Navbar';
 
 export default class Boards extends Component {
   constructor(props){
@@ -47,6 +48,7 @@ export default class Boards extends Component {
 
       return (
         <div className="container-fluid px-0">
+          <Navbar/>
           <HeaderBar 
             backLocation="/"
             backText="Home"

@@ -42,16 +42,18 @@ function MediaCard(props) {
                 <Typography inline className="m-3 py-0" color="default" variant="body1" component="h2" >
                     {props.text}
                 </Typography>
+                { props.author.username === sessionStorage.getItem('username') ? 
                 <Typography inline className="float-right" color="default" variant="body1" component="h2" >
                     <button type="button" className="btn btn-sm btn-outline-danger boardbutton p-0 m-1"
 						onClick={() => deleteComment(props)}>
 							<i className="fas fa-times mx-1"></i>
 					</button>
                 </Typography>
+                : "" }
                 <hr className="mb-0 mt-2 mx-1" />
                 <Typography className="mx-3" inline variant="caption" component="h2">
-                    Posted on <strong>{Moment(props.created).format('MMMM Do YYYY, h:mm:ss A')} </strong>
-                    by <strong>{props.author}</strong>.
+                    Posted <strong>{Moment(props.created).fromNow()} </strong>
+                    by <strong>{props.author.username}</strong>.
                 </Typography>
                 </CardContent>
             </div>

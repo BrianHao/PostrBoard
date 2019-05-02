@@ -5,7 +5,6 @@ import Landing from './Landing';
 import About from './About';
 import Signup from './Signup';
 import Login from './Login';
-import Navbar from './Navbar';
 import PageNotFound from './PageNotFound';
 import { Boards, Board, BoardNewForm, BoardEditForm } from './boards';
 import { Post, PostNewForm, PostEditForm } from './posts';
@@ -37,10 +36,6 @@ class App extends Component {
 
     return (
       <div className="App">
-        <div className="postr-navbar container-fluid mx-0 px-0">
-          <Navbar />
-        </div>
-
         <div className="main-content">
           <Switch>
             <Route exact={true} path="/" component={Landing}/>

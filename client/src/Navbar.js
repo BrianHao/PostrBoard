@@ -1,5 +1,4 @@
 import React from 'react';
-import { Redirect } from "react-router-dom";
 import {
   Navbar,
   NavbarBrand,
@@ -10,11 +9,13 @@ import './App.js';
 
 export default class Example extends React.Component {
   state = {
-    isLoggedIn : sessionStorage.getItem('loggedIn') === "true",
+    isLoggedIn : false,
     }
 
-    componentWillMount(){
-      this.setState({ isLoggedIn : sessionStorage.getItem('loggedIn') === "true" });
+    componentDidMount(){
+      if(sessionStorage.getItem('loggedIn') === "true"){
+        this.setState({ isLoggedIn : true });
+      }
     }
 
   logout() {

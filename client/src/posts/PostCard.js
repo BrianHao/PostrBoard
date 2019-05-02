@@ -34,7 +34,7 @@ function MediaCard(props) {
                 <Typography className="mx-3" inline variant="caption" component="h2">
                     Posted on <strong>{Moment(props.created).format('MMMM Do YYYY, h:mm:ss A')} </strong>
                     in <strong>{props.boardName} </strong> 
-                    by <strong>{props.author} </strong> 
+                    by <strong>{props.author.username} </strong> 
                     with <strong>{props.commentCount} comments</strong>.
                 </Typography>
                 </CardContent>

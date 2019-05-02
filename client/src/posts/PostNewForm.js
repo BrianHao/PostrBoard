@@ -7,6 +7,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import './Post.css';
 import Card from '@material-ui/core/Card';
+import Navbar from '../Navbar';
 
 
 const styles = theme => ({
@@ -87,7 +88,9 @@ class PostNewForm extends React.Component {
                     postLink: this.state.link,
                     postText: this.state.text,
                     boardName: this.state.boardName,
-                    boardTitle: this.state.boardTitle
+                    boardTitle: this.state.boardTitle,
+                    id: sessionStorage.getItem('id'),
+                    username: sessionStorage.getItem('username'),
                 }),
             }).then(response => {
                 if(response.status === 200){
@@ -120,6 +123,7 @@ class PostNewForm extends React.Component {
 
       return (
         <div className="container-fluid px-0">
+          <Navbar/>
           <HeaderBar 
             backLocation={backUrl}
             backText={backUrl}

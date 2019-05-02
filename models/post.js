@@ -23,12 +23,11 @@ let postSchema = new mongoose.Schema({
         default: 0
     },
     author: {
-        // id: {
-        //     type: mongoose.Schema.Types.ObjectId,
-        //     ref: "User"
-        // },
-        type: String,
-        default: "Admin"
+        id: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User"
+        },
+        username: String
     },
     comments: [
         {
