@@ -55,7 +55,7 @@ app.use(expressSession(({
     secure: true,
     maxAge:60000
        },
-	store: new MemoryStore(options)
+	store: new MemoryStore(options),
 	saveUninitialized: false,
 })));
 app.use(passport.initialize());
