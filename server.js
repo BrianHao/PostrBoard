@@ -7,7 +7,8 @@ const express = require('express');
 			LocalStrategy = require("passport-local"),
 			bodyParser = require('body-parser'),
 			cors = require('cors'),
-			dotenv = require("dotenv").config();
+			dotenv = require("dotenv").config(),
+			SessionStore = require('session-mongoose')(express);
 
 // Import Models
 const User = require('./models/user'),
@@ -50,6 +51,11 @@ app.use(cors());
 app.use(expressSession(({
 	secret: SECRET,
 	resave: false,
+	cookie:{
+    secure: true,
+    maxAge:60000
+       },
+	store: new RedisStore(),
 	saveUninitialized: false,
 })));
 app.use(passport.initialize());
