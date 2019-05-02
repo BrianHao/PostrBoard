@@ -8,7 +8,8 @@ const express = require('express');
 			LocalStrategy = require("passport-local"),
 			bodyParser = require('body-parser'),
 			cors = require('cors'),
-			dotenv = require("dotenv").config();
+			dotenv = require("dotenv").config(),
+			path = require("path");
 
 // Import Models
 const User = require('./models/user'),
@@ -38,7 +39,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/postrdb",
 	(err) => {
 		if (err) throw err;
 		 console.log('Successfully connected to mongodb');
-		 seedDB();
+		 //seedDB();
 });
 
 // app config
@@ -46,6 +47,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors());
+app.use(express.static(path.join(__dirname, "client", "build")))
 
 const store = new MongoDBStore({
   uri: process.env.MONGODB_URI || "mongodb://localhost:27017/postrdb",
