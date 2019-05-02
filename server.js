@@ -68,6 +68,11 @@ app.use("/api/b", boardsRoutes);
 app.use("/api/b/:boardName", postsRoutes);
 app.use("/api/b/:boardName/:postId", commentsRoutes);
 
+// Serve React App
+app.get("*", (req, res) => {
+	res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
+
 // Start server
 app.listen(PORT, () => {
     console.log(`Server is up and running on port: ${PORT}`)
