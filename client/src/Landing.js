@@ -67,7 +67,7 @@ export default class Landing extends Component {
             </Button>
 								<hr className="mt-2" />
                 <Typography className=" text-center py-0" color="default" variant="overline" component="h2" >
-              Showing 20 Most Recent Posts From All Boards
+              Showing 20 Most Recent Posts
             </Typography>
 								<div className="text-left">
 									{ postsList.length > 0 ? postsList : <div className="text-center pb-3">No Posts to display!</div> }

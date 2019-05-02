@@ -9,6 +9,7 @@ import PageNotFound from './PageNotFound';
 import { Boards, Board, BoardNewForm, BoardEditForm } from './boards';
 import { Post, PostNewForm, PostEditForm } from './posts';
 import './App.css';
+import Footer from './Footer';
 
 
 class App extends Component {
@@ -36,7 +37,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <div className="main-content">
+        <div className="main-content pb-5 mb-5">
           <Switch>
             <Route exact={true} path="/" component={Landing}/>
             <Route exact={true} path="/about" component={About}/>
@@ -50,9 +51,9 @@ class App extends Component {
             <Route exact={true} path="/b/:boardName/:postId" component={Post}/>
             <Route exact={true} path="/b/:boardName/:postId/edit" component={PostEditForm}/>
             <Route path="/*" component={PageNotFound}/>
-            
             </Switch>
         </div>
+        <Footer />
       </div>
         
     );

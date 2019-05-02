@@ -1,9 +1,29 @@
 import React, {Component} from 'react';
+import HeaderBar from './HeaderBar';
+import Navbar from './Navbar';
+import Typography from '@material-ui/core/Typography';
+import Card from '@material-ui/core/Card';
+import PostCard from './posts/PostCard';
+import Button from '@material-ui/core/Button';
+import { Link } from 'react-router-dom';
 
 export default class About extends Component {
-    render() {
+  render() {
       return (
-          <h1>This is the About page.</h1>
+        <div className="container-fluid px-0">
+          <Navbar/>
+          <HeaderBar 
+            backLocation="/"
+            backText="Home"
+            centerText="Welcome to Postr.Board"
+            newLocation=""
+            newText=""
+            color="primary"
+          />
+          <Card raised className="container mx-auto m-3">
+            Hello
+    				</Card>
+        </div>
       );
     }
 }

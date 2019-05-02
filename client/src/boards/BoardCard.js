@@ -43,11 +43,11 @@ function MediaCard(props) {
         </CardContent>
       </CardActionArea>
       </Link>
-      <CardActions style={styles.card} className="d-flex justify-content-between">
+      <CardActions style={styles.card} className="py-0 d-flex justify-content-between">
         <Typography variant="button" component="h6" className="mx-auto">
             {props.postCount} Posts
         </Typography>
-          <Button className="" component={Link} to={{
+          <Button className="mx-auto px-0" component={Link} to={{
             pathname: "/b/" + props.name + "/new", 
             state: {boardName: props.name}
             }} color="inherit">

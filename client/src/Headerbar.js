@@ -26,7 +26,7 @@ function HeaderBar(props) {
   const { classes } = props;
 
   return (
-    <div className={classes.root}>
+    <div className="sticky-top">
       <AppBar position="static" color={props.color}>
         <Toolbar>
           { props.backText ? (
