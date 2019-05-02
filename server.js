@@ -1,14 +1,14 @@
 // Import Packages
 const express = require('express');
 			expressSession = require('express-session'),
+			MongoDBStore = require('connect-mongodb-session')(expressSession),
 			cookieParser = require('cookie-parser'),
 			mongoose    = require("mongoose"),
 			passport = require("passport"),
 			LocalStrategy = require("passport-local"),
 			bodyParser = require('body-parser'),
 			cors = require('cors'),
-			dotenv = require("dotenv").config(),
-			MemoryStore = require('session-memory-store')(session);
+			dotenv = require("dotenv").config();
 
 // Import Models
 const User = require('./models/user'),
@@ -47,16 +47,23 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors());
 
+const store = new MongoDBStore({
+  uri: process.env.MONGODB_URI || "mongodb://localhost:27017/postrdb",
+  collection: 'mySessions'
+});
+
+store.on('error', function(error) {
+  console.log(error);
+});
 // Passport Config
 app.use(expressSession(({
 	secret: SECRET,
-	resave: false,
-	cookie:{
-    secure: true,
-    maxAge:60000
-       },
-	store: new MemoryStore(options),
-	saveUninitialized: false,
+	cookie: {
+    maxAge: 1000 * 60 * 60 * 24 * 7 // 1 week
+  },
+  store: store,
+  resave: true,
+  saveUninitialized: true	
 })));
 app.use(passport.initialize());
 app.use(passport.session());
