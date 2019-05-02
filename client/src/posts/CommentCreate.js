@@ -14,7 +14,7 @@ class CommentCreateForm extends React.Component {
   };
 
   submit = () => {
-    let url = 'http://localhost:5000/api/b/' + this.props.boardName + "/" + this.props.postId;
+    let url = '/api/b/' + this.props.boardName + "/" + this.props.postId;
         fetch(url, {
                 method: "POST",
                 headers: {
@@ -56,10 +56,11 @@ class CommentCreateForm extends React.Component {
           onChange={this.handleChange('comment')}
         />
         <div className="text-left">
+          {sessionStorage.getItem('loggedIn') === "true" ? 
             <button type="button" className="btn btn-sm btn-outline-primary boardbutton"
 				onClick={() => this.submit()}>
                 <i className="far fa-comment-alt mr-1"></i> Post Comment
-			</button>
+			</button> : (<a href="/login">Log In</a> + " to leave a comment") }
         </div>
       </form>
     );

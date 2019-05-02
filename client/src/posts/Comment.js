@@ -14,7 +14,7 @@ const styles = {
 };
 
 function deleteComment(props){
-    let url = 'http://localhost:5000/api/b/' + props.boardName + "/" + props.postId + "/" + props._id;
+    let url = '/api/b/' + props.boardName + "/" + props.postId + "/" + props._id;
 		fetch(url, {
 			method: "DELETE",
 			headers: {

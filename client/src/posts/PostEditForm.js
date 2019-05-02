@@ -43,7 +43,7 @@ class PostNewForm extends React.Component {
     componentWillMount(){
       let path = this.props.location.pathname.split("/");
       this.setState({ postBoard: path[2], postId: path[3] }, () => {
-        let url = 'http://localhost:5000/api/b/' + this.state.postBoard + "/" + this.state.postId;
+        let url = '/api/b/' + this.state.postBoard + "/" + this.state.postId;
               fetch(url, {
           method: 'GET',
           headers: {
@@ -80,7 +80,7 @@ class PostNewForm extends React.Component {
   
 
   submit = () => {
-    let url = 'http://localhost:5000/api/b/' + this.state.postBoard + "/" + this.state.postId;
+    let url = '/api/b/' + this.state.postBoard + "/" + this.state.postId;
     fetch(url, {
 			method: "PUT",
 			headers: {

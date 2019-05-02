@@ -36,7 +36,7 @@ export default class Post extends Component {
   componentWillMount(){
 		let path = this.props.location.pathname.split("/");
 		this.setState({ postBoard: path[2], postId: path[3] }, () => {
-			let url = 'http://localhost:5000/api/b/' + this.state.postBoard + "/" + this.state.postId;
+			let url = '/api/b/' + this.state.postBoard + "/" + this.state.postId;
             fetch(url, {
 				method: 'GET',
 				headers: {
@@ -79,7 +79,7 @@ export default class Post extends Component {
 	}
 
 	deletePost(){
-		let url = 'http://localhost:5000/api/b/' + this.state.postBoard + "/" + this.state.postId;
+		let url = '/api/b/' + this.state.postBoard + "/" + this.state.postId;
 		fetch(url, {
 			method: "DELETE",
 			headers: {

@@ -14,7 +14,7 @@ export default class Boards extends Component {
   };
   
   componentWillMount(){
-    let url = 'http://localhost:5000/api/b';
+    let url = '/api/b';
     fetch(url, {
 			method: 'GET',
 			headers: {

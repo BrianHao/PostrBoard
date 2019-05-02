@@ -16,7 +16,7 @@ export default class Landing extends Component {
   };
 
   componentWillMount(){
-			let url = 'http://localhost:5000/api/';
+			let url = '/api/';
 			fetch(url, {
 				method: 'GET',
 				headers: {

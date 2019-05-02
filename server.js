@@ -1,12 +1,15 @@
 // Import Packages
 const express = require('express');
 			expressSession = require('express-session'),
+			MongoDBStore = require('connect-mongodb-session')(expressSession),
 			cookieParser = require('cookie-parser'),
 			mongoose    = require("mongoose"),
 			passport = require("passport"),
 			LocalStrategy = require("passport-local"),
-			bodyParser = require('body-parser')
-			cors = require('cors');
+			bodyParser = require('body-parser'),
+			cors = require('cors'),
+			dotenv = require("dotenv").config(),
+			path = require("path");
 
 // Import Models
 const User = require('./models/user'),
@@ -24,17 +27,19 @@ const authRoutes = require('./routes/auth'),
 const seedDB = require('./seed');
 
 const PORT = process.env.PORT || 5000;
+const SECRET = process.env.SECRET || "Recyclable cardboard";
+
 const app = express();
 
 // Mongoose Config
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
-mongoose.connect("mongodb://localhost:27017/postrdb", 
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/postrdb", 
 	(err) => {
 		if (err) throw err;
 		 console.log('Successfully connected to mongodb');
-		 seedDB();
+		 //seedDB();
 });
 
 // app config
@@ -42,12 +47,25 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors());
+app.use(express.static(path.join(__dirname, "client", "build")))
 
+const store = new MongoDBStore({
+  uri: process.env.MONGODB_URI || "mongodb://localhost:27017/postrdb",
+  collection: 'mySessions'
+});
+
+store.on('error', function(error) {
+  console.log(error);
+});
 // Passport Config
 app.use(expressSession(({
-	secret: 'Recyclable cardboard',
-	resave: false,
-	saveUninitialized: false,
+	secret: SECRET,
+	cookie: {
+    maxAge: 1000 * 60 * 60 * 24 * 7 // 1 week
+  },
+  store: store,
+  resave: true,
+  saveUninitialized: true	
 })));
 app.use(passport.initialize());
 app.use(passport.session());
