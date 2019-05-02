@@ -47,12 +47,13 @@ function MediaCard(props) {
         <Typography variant="button" component="h6" className="mx-auto">
             {props.postCount} Posts
         </Typography>
+        {sessionStorage.getItem('loggedIn') === "true" ? 
           <Button className="mx-auto px-0" component={Link} to={{
             pathname: "/b/" + props.name + "/new", 
             state: {boardName: props.name}
             }} color="inherit">
               <i className="fas fa-plus mr-1"></i>New Post
-          </Button>
+          </Button> : "" }
       </CardActions>
     </Card>
       </div>

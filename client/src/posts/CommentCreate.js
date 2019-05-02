@@ -1,5 +1,6 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
+import { Link } from 'react-router-dom';
 
 
 class CommentCreateForm extends React.Component {
@@ -60,7 +61,7 @@ class CommentCreateForm extends React.Component {
             <button type="button" className="btn btn-sm btn-outline-primary boardbutton"
 				onClick={() => this.submit()}>
                 <i className="far fa-comment-alt mr-1"></i> Post Comment
-			</button> : (<a href="/login">Log In</a> + " to leave a comment") }
+			</button> : (<Link to={{pathname: "/login"}}>Log In</Link> + " to leave a comment") }
         </div>
       </form>
     );
