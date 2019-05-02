@@ -43,7 +43,7 @@ class PostNewForm extends React.Component {
     componentWillMount(){
         let path = this.props.location.pathname.split("/");
         this.setState({ boardName: path[2] }, () => {
-            let url = 'http://localhost:5000/api/b/' + this.state.boardName;
+            let url = '/api/b/' + this.state.boardName;
 			fetch(url, {
 				method: 'GET',
 				headers: {

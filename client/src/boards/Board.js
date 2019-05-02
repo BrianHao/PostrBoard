@@ -59,7 +59,7 @@ export default class Board extends Component {
 	}
 
 	deleteBoard(){
-		let url = 'http://localhost:5000/api/b/' + this.state.name;
+		let url = '/api/b/' + this.state.name;
 		fetch(url, {
 			method: "DELETE",
 			headers: {
