@@ -11,7 +11,7 @@ export default class Example extends React.Component {
     return (
       <div className="fixed-bottom">
         <Navbar className="justify-content-center" color="dark" dark expand="md">
-          <NavbarBrand className="text-center" href="/">Postr.Board ©2019 Brian Hao</NavbarBrand>
+          <NavbarBrand className="text-center" href="https://github.com/BrianHao">Postr.Board ©2019 Brian Hao</NavbarBrand>
         </Navbar>
       </div>
     );
