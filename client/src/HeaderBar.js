@@ -37,7 +37,7 @@ function HeaderBar(props) {
           <Typography variant="h4" color="inherit" className={classes.grow}>
             {props.centerText}
           </Typography>
-          { props.newText ? (
+          { (sessionStorage.getItem('loggedIn') === "true") && props.newText ? (
             <Button component={Link} to={props.newLocation} color="inherit" className="headerButton">
             <i className="fas fa-plus mr-1"></i>{props.newText}
             </Button>

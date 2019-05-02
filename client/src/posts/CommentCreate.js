@@ -56,10 +56,11 @@ class CommentCreateForm extends React.Component {
           onChange={this.handleChange('comment')}
         />
         <div className="text-left">
+          {sessionStorage.getItem('loggedIn') === "true" ? 
             <button type="button" className="btn btn-sm btn-outline-primary boardbutton"
 				onClick={() => this.submit()}>
                 <i className="far fa-comment-alt mr-1"></i> Post Comment
-			</button>
+			</button> : "Log in to leave a comment" }
         </div>
       </form>
     );

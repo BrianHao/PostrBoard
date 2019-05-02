@@ -2,6 +2,7 @@ import React from 'react';
 import { Redirect } from "react-router-dom";
 import HeaderBar from './HeaderBar';
 import PropTypes from 'prop-types';
+import Navbar from './Navbar';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -86,6 +87,7 @@ class Login extends React.Component {
 
       return (
         <div className="container-fluid px-0">
+          <Navbar/>
           <HeaderBar 
             backLocation="/"
             backText="Home"
