@@ -48,7 +48,7 @@ class BoardNewForm extends React.Component {
       this.setState({ error: true });
     } else {
       let tempImage = this.state.image === "" ? "https://vollrath.com/ClientCss/images/VollrathImages/No_Image_Available.jpg" : this.state.image ;
-      let url = 'http://localhost:5000/api/b';
+      let url = '/api/b';
       fetch(url, {
         method: "POST",
         headers: {

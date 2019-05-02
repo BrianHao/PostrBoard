@@ -31,7 +31,7 @@ export default class Board extends Component {
   componentWillMount(){
 		let path = this.props.location.pathname.split("/");
 		this.setState({ name: path[2] }, () => {
-			let url = 'http://localhost:5000/api/b/' + this.state.name;
+			let url = '/api/b/' + this.state.name;
 			fetch(url, {
 				method: 'GET',
 				headers: {

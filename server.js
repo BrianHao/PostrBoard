@@ -5,8 +5,9 @@ const express = require('express');
 			mongoose    = require("mongoose"),
 			passport = require("passport"),
 			LocalStrategy = require("passport-local"),
-			bodyParser = require('body-parser')
-			cors = require('cors');
+			bodyParser = require('body-parser'),
+			cors = require('cors'),
+			dotenv = require("dotenv").config();
 
 // Import Models
 const User = require('./models/user'),
@@ -24,13 +25,15 @@ const authRoutes = require('./routes/auth'),
 const seedDB = require('./seed');
 
 const PORT = process.env.PORT || 5000;
+const SECRET = process.env.SECRET || "Recyclable cardboard";
+
 const app = express();
 
 // Mongoose Config
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
-mongoose.connect("mongodb://localhost:27017/postrdb", 
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/postrdb", 
 	(err) => {
 		if (err) throw err;
 		 console.log('Successfully connected to mongodb');
@@ -45,7 +48,7 @@ app.use(cors());
 
 // Passport Config
 app.use(expressSession(({
-	secret: 'Recyclable cardboard',
+	secret: SECRET,
 	resave: false,
 	saveUninitialized: false,
 })));

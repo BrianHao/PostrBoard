@@ -80,7 +80,7 @@ class PostNewForm extends React.Component {
   
 
   submit = () => {
-    let url = 'http://localhost:5000/api/b/' + this.state.postBoard + "/" + this.state.postId;
+    let url = '/api/b/' + this.state.postBoard + "/" + this.state.postId;
     fetch(url, {
 			method: "PUT",
 			headers: {

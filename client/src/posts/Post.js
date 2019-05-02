@@ -79,7 +79,7 @@ export default class Post extends Component {
 	}
 
 	deletePost(){
-		let url = 'http://localhost:5000/api/b/' + this.state.postBoard + "/" + this.state.postId;
+		let url = '/api/b/' + this.state.postBoard + "/" + this.state.postId;
 		fetch(url, {
 			method: "DELETE",
 			headers: {

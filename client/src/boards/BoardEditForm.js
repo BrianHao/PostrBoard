@@ -73,7 +73,7 @@ class BoardNewForm extends React.Component {
   
 
   submit = () => {
-    let url = 'http://localhost:5000/api/b/' + this.state.name;
+    let url = '/api/b/' + this.state.name;
     fetch(url, {
 			method: "PUT",
 			headers: {

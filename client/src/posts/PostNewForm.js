@@ -77,7 +77,7 @@ class PostNewForm extends React.Component {
     if(this.state.title === "") {
         this.setState({ error: true });
       } else {
-        let url = 'http://localhost:5000/api/b/' + this.state.boardName;
+        let url = '/api/b/' + this.state.boardName;
         fetch(url, {
                 method: "POST",
                 headers: {

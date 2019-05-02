@@ -48,7 +48,7 @@ class Login extends React.Component {
     } else if (this.state.password=== "") {
       this.setState({ userError: false, passError: true });
     } else {
-      fetch('http://localhost:5000/api/login', {
+      fetch('/api/login', {
         method: "POST",
         headers: {
           "Content-Type": "application/json; charset=utf-8",

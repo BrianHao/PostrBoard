@@ -14,7 +14,7 @@ class CommentCreateForm extends React.Component {
   };
 
   submit = () => {
-    let url = 'http://localhost:5000/api/b/' + this.props.boardName + "/" + this.props.postId;
+    let url = '/api/b/' + this.props.boardName + "/" + this.props.postId;
         fetch(url, {
                 method: "POST",
                 headers: {
