@@ -43,7 +43,7 @@ export default class Example extends React.Component {
             <Nav className="ml-auto inline-item" navbar>
               <NavItem className="inline-item">
                 <NavLink href="/login/">
-                <i className="fas fa-sign-in-alt"></i> Log In</NavLink>
+                <i className="fas fa-sign-in-alt mr-2"></i> Log In</NavLink>
               </NavItem>
               <NavItem className="inline-item">
                 <NavLink href="/signup/">
