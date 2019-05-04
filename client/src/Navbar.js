@@ -28,7 +28,7 @@ export default class Example extends React.Component {
     return (
       <div>
         <Navbar color="dark" dark expand="md">
-          <NavbarBrand className="mr-auto" href="/">Postr.Board</NavbarBrand>
+          <NavbarBrand className="mr-auto" href="/">Postr.Board alert</NavbarBrand>
           { this.state.isLoggedIn ? ( //Navbar if user not logged in
             <Nav className="ml-auto inline-item" navbar>
               <span className="navbar-text ml-auto mr-3 inline-item">
