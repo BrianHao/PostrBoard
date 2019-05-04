@@ -6,16 +6,21 @@ import Card from '@material-ui/core/Card';
 import PostCard from './posts/PostCard';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
+import Alert from './Alert';
 
 export default class Landing extends Component {
   constructor(props){
 		super(props);
 		this.state = {
-			posts: []
+      posts: [],
+      alertMsg: ""
 		};
   };
 
   componentWillMount(){
+      if(this.props.location.state !== undefined) {
+        this.setState({ alertMsg: this.props.location.state.alertMsg });
+      }
 			let url = '/api/';
 			fetch(url, {
 				method: 'GET',
@@ -61,6 +66,8 @@ export default class Landing extends Component {
             newText=""
             color="primary"
           />
+          <Alert message={this.state.alertMsg} />
+
           <Card raised className="container mx-auto m-3">
             <Button component={Link} to="/b" color="primary" variant="contained" size="large" className="mt-3 mb-2 headerButton">
               View All Boards

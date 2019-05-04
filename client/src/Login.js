@@ -70,7 +70,7 @@ class Login extends React.Component {
         sessionStorage.setItem('username', body.username);
         sessionStorage.setItem('loggedIn', "true");
       }).then(()=> {
-        this.props.history.push("/");
+        this.setState({ isloggedIn: true });
       }).catch(() => {
         console.log("Wrong Credentials");
       })    
@@ -82,6 +82,9 @@ class Login extends React.Component {
         
         return <Redirect to={{
           pathname: "/",
+          state: {
+            alertMsg: "info"
+          }
           }} />;
       }
 
