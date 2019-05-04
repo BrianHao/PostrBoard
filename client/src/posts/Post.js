@@ -161,7 +161,7 @@ export default class Post extends Component {
                 </Typography>
                 { this.state.postUpdated ? <Typography variant="caption" component="h2"><em>Edited: {Moment(this.state.postUpdated).format('MMMM Do YYYY, h:mm:ss A')}</em></Typography>
                 : "" }
-                { this.state.postAuthor === sessionStorage.getItem('username') ? 
+                { (this.state.postAuthor === sessionStorage.getItem('username') || sessionStorage.getItem('username') === 'Admin') ? 
 								<CardActions className="px-0 pb-0">
 									<a href={editUrl} className="btn btn-sm btn-outline-info boardbutton mx-0">
 										<i className="far fa-edit mr-1"></i> Edit Post

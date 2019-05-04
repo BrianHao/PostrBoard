@@ -141,7 +141,7 @@ export default class Board extends Component {
 								<Typography component="p">
 									<strong>Created on:</strong> {Moment(this.state.created).format('MMMM Do YYYY, h:mm:ss a')}
 								</Typography>
-								{ this.state.creator === sessionStorage.getItem('username') ? 
+								{ (this.state.creator === sessionStorage.getItem('username') || sessionStorage.getItem('username') === 'Admin') ? 
 								<CardActions className="px-0 pb-0">
 									<a href={editUrl} className="btn btn-sm btn-outline-info boardbutton mx-0">
 										<i className="far fa-edit mr-1"></i> Edit Board

@@ -63,7 +63,7 @@ class CommentCreateForm extends React.Component {
 				onClick={() => this.submit()}>
                 <i className="far fa-comment-alt mr-1"></i> Post Comment
 			</button> : 
-      <Typography component={Link} to="/login" className=" text-center py-0" color="default" variant="overline" component="h2" >
+      <Typography component={Link} to="/login" className=" text-left py-0" color="default" variant="overline" >
               Log In to Leave a Comment
             </Typography> }
         </div>

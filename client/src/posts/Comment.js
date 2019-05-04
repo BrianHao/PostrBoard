@@ -42,7 +42,7 @@ function MediaCard(props) {
                 <Typography inline className="m-3 py-0" color="default" variant="body1" component="h2" >
                     {props.text}
                 </Typography>
-                { props.author.username === sessionStorage.getItem('username') ? 
+                { (props.author.username === sessionStorage.getItem('username') || sessionStorage.getItem('username') === 'Admin') ? 
                 <Typography inline className="float-right" color="default" variant="body1" component="h2" >
                     <button type="button" className="btn btn-sm btn-outline-danger boardbutton p-0 m-1"
 						onClick={() => deleteComment(props)}>
