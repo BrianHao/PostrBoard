@@ -7,7 +7,7 @@ import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
-
+import Alert from './Alert';
 
 const styles = theme => ({
   container: {
@@ -33,7 +33,8 @@ class Login extends React.Component {
     password: "",
     isloggedIn: false,
     passError: false,
-    userError: false
+    userError: false,
+    alertMsg: ""
     }
 
   handleChange = name => event => {
@@ -70,9 +71,10 @@ class Login extends React.Component {
         sessionStorage.setItem('username', body.username);
         sessionStorage.setItem('loggedIn', "true");
       }).then(()=> {
-        this.setState({ isloggedIn: true });
+        this.setState({ isloggedIn: true, alertMsg: "" });
       }).catch(() => {
         console.log("Wrong Credentials");
+        this.setState({ alertMsg: "loginError" });
       })    
     }
 	}
@@ -100,6 +102,7 @@ class Login extends React.Component {
             required
             color="primary"
           />
+          <Alert type={this.state.alertMsg} />
 
           <Card raised className="container newBoardForm my-5 p-5">
             <TextField
