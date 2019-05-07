@@ -19,7 +19,6 @@ export default class Landing extends Component {
 
   componentWillMount(){
       if(this.props.location.state !== undefined) {
-        console.log(this.props.location.state.alertMsg);
         this.setState({ alertMsg: this.props.location.state.alertMsg });
       }
 			let url = '/api/';
@@ -67,7 +66,7 @@ export default class Landing extends Component {
             newText=""
             color="primary"
           />
-          <Alert message={this.state.alertMsg} />
+          <Alert type={this.state.alertMsg} />
 
           <Card raised className="container mx-auto m-3">
             <Button component={Link} to="/b" color="primary" variant="contained" size="large" className="mt-3 mb-2 headerButton">
