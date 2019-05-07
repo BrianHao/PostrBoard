@@ -18,6 +18,7 @@ export default class Landing extends Component {
   };
 
   componentWillMount(){
+    console.log(this.props.location);
       if(this.props.location.state !== undefined) {
         this.setState({ alertMsg: this.props.location.state.alertMsg });
       }
