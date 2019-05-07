@@ -11,7 +11,7 @@ import './Post.css';
 import CommentCreateForm from './CommentCreate';
 import Comment from "./Comment";
 import Navbar from '../Navbar';
-import Alert from './Alert';
+import Alert from '../Alert';
 
 export default class Post extends Component {
   

@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button';
 import './Post.css';
 import Card from '@material-ui/core/Card';
 import Navbar from '../Navbar';
-import Alert from './Alert';
+import Alert from '../Alert';
 
 
 const styles = theme => ({

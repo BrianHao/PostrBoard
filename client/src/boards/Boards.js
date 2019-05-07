@@ -3,7 +3,7 @@ import BoardCard from './BoardCard';
 import HeaderBar from '../HeaderBar';
 import './Board.css';
 import Navbar from '../Navbar';
-import Alert from './Alert';
+import Alert from '../Alert';
 
 export default class Boards extends Component {
   constructor(props){

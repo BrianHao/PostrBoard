@@ -10,7 +10,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import './Board.css';
 import PostCard from '../posts/PostCard';
 import Navbar from '../Navbar';
-import Alert from './Alert';
+import Alert from '../Alert';
 
 export default class Board extends Component {
   
