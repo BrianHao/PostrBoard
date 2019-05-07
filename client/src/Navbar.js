@@ -21,12 +21,7 @@ export default class Example extends React.Component {
 
   logout() {
     sessionStorage.clear();
-    return <Redirect to={{
-      pathname: "/",
-      state: {
-        alertMsg: "logoutSuccess"
-      }
-      }} />;
+    this.props.history.push("/");
   }
   
   render() {
