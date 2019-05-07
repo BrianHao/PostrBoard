@@ -7,8 +7,8 @@ export default function Alert(props) {
     <div>
       {(() => {
         switch(props.type) {
-          case 'info':
-            return <UncontrolledAlert color="info">Login Success!</UncontrolledAlert>;
+          case 'loginSuccess':
+            return <UncontrolledAlert color="success">Successfully logged in as {sessionStorage.getItem('username')}!</UncontrolledAlert>;
           case 'warning':
             return <UncontrolledAlert color="info">WARNING!!</UncontrolledAlert>;
           case 'error':

@@ -83,7 +83,7 @@ class Login extends React.Component {
         return <Redirect to={{
           pathname: "/",
           state: {
-            alertMsg: "info"
+            alertMsg: "loginSuccess"
           }
           }} />;
       }
