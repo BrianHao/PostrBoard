@@ -10,6 +10,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import './Board.css';
 import PostCard from '../posts/PostCard';
 import Navbar from '../Navbar';
+import Alert from './Alert';
 
 export default class Board extends Component {
   
@@ -24,11 +25,15 @@ export default class Board extends Component {
 			creator: "",
 			posts: [],
 			found: true,
-			deleted: false
+			deleted: false,
+			alertMsg: ""
 		};
   };
   
   componentWillMount(){
+		if(this.props.location.state !== undefined) {
+			this.setState({ alertMsg: this.props.location.state.alertMsg });
+		}
 		let path = this.props.location.pathname.split("/");
 		this.setState({ name: path[2] }, () => {
 			let url = '/api/b/' + this.state.name;
@@ -99,7 +104,11 @@ export default class Board extends Component {
 
 		if(this.state.deleted){
 			return <Redirect to={{
-				pathname: "/b/"
+				pathname: "/b/",
+          state: {
+            alertMsg: "deleteBoardSuccess"
+          }
+
 				}} />;
 		}
 
@@ -123,6 +132,7 @@ export default class Board extends Component {
             newText="New Post"
 						color="primary"
           />
+					<Alert type={this.state.alertMsg} />
 
 					<Card raised className="container mx-auto m-3">
 						<div className="row">

@@ -26,6 +26,14 @@ export default function Alert(props) {
             return <UncontrolledAlert color="success">Successfully created Post!</UncontrolledAlert>;
           case 'createPostError':
             return <UncontrolledAlert color="danger">Error: Could not create Post. Please ensure title is not empty.</UncontrolledAlert>;
+          case 'editBoardSuccess':
+            return <UncontrolledAlert color="success">Successfully edited Board!</UncontrolledAlert>;
+          case 'deleteBoardSuccess':
+            return <UncontrolledAlert color="success">Successfully deleted Board!</UncontrolledAlert>;
+          case 'editPostSuccess':
+            return <UncontrolledAlert color="success">Successfully edited Post!</UncontrolledAlert>;
+          case 'deletePostSuccess':
+            return <UncontrolledAlert color="success">Successfully deleted Post!</UncontrolledAlert>;
           default:
             return null;
         }

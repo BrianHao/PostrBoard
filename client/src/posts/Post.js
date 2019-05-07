@@ -11,6 +11,7 @@ import './Post.css';
 import CommentCreateForm from './CommentCreate';
 import Comment from "./Comment";
 import Navbar from '../Navbar';
+import Alert from './Alert';
 
 export default class Post extends Component {
   
@@ -29,11 +30,15 @@ export default class Post extends Component {
             boardTitle: "",
             foundBoard: "",
             found: true,
-            deleted: false
+            deleted: false,
+            alertMsg: ""
 		};
   };
   
   componentWillMount(){
+    if(this.props.location.state !== undefined) {
+      this.setState({ alertMsg: this.props.location.state.alertMsg });
+    }
 		let path = this.props.location.pathname.split("/");
 		this.setState({ postBoard: path[2], postId: path[3] }, () => {
 			let url = '/api/b/' + this.state.postBoard + "/" + this.state.postId;
@@ -107,7 +112,10 @@ export default class Post extends Component {
 
         if(this.state.deleted){
 			return <Redirect to={{
-				pathname: "/b/" + this.state.postBoard
+				pathname: "/b/" + this.state.postBoard,
+          state: {
+            alertMsg: "deletePostSuccess"
+          }
 				}} />;
     }
     
@@ -140,6 +148,7 @@ export default class Post extends Component {
             newText=""
 			      color="primary"
           />
+          <Alert type={this.state.alertMsg} />
 
           <Card raised className="container mx-auto m-3">
 						<div className="row">

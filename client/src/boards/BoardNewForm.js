@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 import './Board.css';
 import Card from '@material-ui/core/Card';
 import Navbar from '../Navbar';
+import Alert from './Alert';
 
 const styles = theme => ({
   container: {
@@ -34,6 +35,7 @@ class BoardNewForm extends React.Component {
       description: "",
       image: "",
       error: false,
+      alertMsg: ""
 		}
 
   handleChange = name => event => {
@@ -68,13 +70,14 @@ class BoardNewForm extends React.Component {
         }
       }).then(body => {
           if(body.created) {
-            this.setState({ created: true });
+            this.setState({ created: true, alertMsg: "" });
           } else {
-            this.setState({ error: true });
+            this.setState({ error: true, alertMsg: "createBoardError" });
           }
       }).catch((err) => {
             console.log("Error creating Board.")
             console.log(err);
+            this.setState({ alertMsg: "createBoardError" });
       })
     }
 	}
@@ -83,7 +86,7 @@ class BoardNewForm extends React.Component {
       if(this.state.created){
         return <Redirect to={{
           pathname: "/b/" + this.state.name, 
-          state: {boardName: this.state.name}
+          state: {boardName: this.state.name, alertMsg: "createBoardSuccess"}
           }} />;
       }
       
@@ -98,6 +101,7 @@ class BoardNewForm extends React.Component {
             newText=""
             color="primary"
           />
+          <Alert type={this.state.alertMsg} />
 
           <Card raised className="container newBoardForm my-5 p-5">
             <TextField

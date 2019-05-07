@@ -109,7 +109,7 @@ class PostNewForm extends React.Component {
       if(this.state.edited){
         return <Redirect to={{
           pathname: "/b/" + this.state.postBoard + "/" + this.state.postId, 
-          state: {boardName: this.state.postBoard}
+          state: {boardName: this.state.postBoard, alertMsg: "editPostSuccess"}
           }} />;
       }
 

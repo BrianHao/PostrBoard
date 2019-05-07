@@ -37,6 +37,12 @@ class Login extends React.Component {
     alertMsg: ""
     }
 
+    componentWillMount(){
+      if(this.props.location.state !== undefined) {
+        this.setState({ alertMsg: this.props.location.state.alertMsg });
+      }
+    }
+
   handleChange = name => event => {
     this.setState({
       [name]: event.target.value,
@@ -81,7 +87,6 @@ class Login extends React.Component {
   
     render() {
       if(this.state.isloggedIn){
-        
         return <Redirect to={{
           pathname: "/",
           state: {

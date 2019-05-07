@@ -103,7 +103,7 @@ class BoardNewForm extends React.Component {
       if(this.state.edited){
         return <Redirect to={{
           pathname: "/b/" + this.state.name, 
-          state: {boardName: this.state.name}
+          state: {boardName: this.state.name, alertMsg: "editBoardSuccess"}
           }} />;
       }
 

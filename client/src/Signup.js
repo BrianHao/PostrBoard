@@ -7,6 +7,7 @@ import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
+import Alert from './Alert';
 
 
 const styles = theme => ({
@@ -33,7 +34,14 @@ class Signup extends React.Component {
     password: "",
     success: false,
     passError: false,
-    userError: false
+    userError: false,
+    alertMsg: ""
+    }
+
+    componentWillMount(){
+      if(this.props.location.state !== undefined) {
+        this.setState({ alertMsg: this.props.location.state.alertMsg });
+      }
     }
 
   handleChange = name => event => {
@@ -67,16 +75,22 @@ class Signup extends React.Component {
       }).then(body => {
         //console.log(body.username);
         //console.log(body.id);
-        this.setState({ success: true });
+        this.setState({ success: true, alertMsg: "" });
       }).catch(() => {
         console.log("Error creating user");
+        this.setState({ alertMsg: "signupError" });
       })
     }
 	}
   
     render() {
       if(this.state.success){
-        return <Redirect to={"/login"} />;
+        return <Redirect to={{
+          pathname: "/login",
+          state: {
+            alertMsg: "signupSuccess"
+          }
+          }} />;
       }
 
       return (
@@ -91,6 +105,7 @@ class Signup extends React.Component {
             required
             color="primary"
           />
+          <Alert type={this.state.alertMsg} />
 
           <Card raised className="container newBoardForm my-5 p-5">
             <TextField

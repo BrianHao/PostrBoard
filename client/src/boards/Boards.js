@@ -3,17 +3,22 @@ import BoardCard from './BoardCard';
 import HeaderBar from '../HeaderBar';
 import './Board.css';
 import Navbar from '../Navbar';
+import Alert from './Alert';
 
 export default class Boards extends Component {
   constructor(props){
     super(props);
     
 		this.state = {
-      boards: []
+      boards: [],
+      alertMsg: ""
 		};
   };
   
   componentWillMount(){
+    if(this.props.location.state !== undefined) {
+      this.setState({ alertMsg: this.props.location.state.alertMsg });
+    }
     let url = '/api/b';
     fetch(url, {
 			method: 'GET',
@@ -57,6 +62,8 @@ export default class Boards extends Component {
             newText="New Board"
             color="primary"
           />
+          <Alert type={this.state.alertMsg} />
+
           <div className="container">
             <div className="row mt-3" id="boardCardsDisplay">
             { boardsToDisplay.length > 0 ? boardsToDisplay : <div className="text-center">No Boards to display!</div> }

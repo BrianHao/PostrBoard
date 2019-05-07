@@ -6,6 +6,7 @@ import {
   NavItem,
   NavLink } from 'reactstrap';
 import './App.js';
+import { Redirect } from "react-router-dom";
 
 export default class Example extends React.Component {
   state = {
@@ -20,7 +21,12 @@ export default class Example extends React.Component {
 
   logout() {
     sessionStorage.clear();
-    window.location.reload();
+    return <Redirect to={{
+      pathname: "/",
+      state: {
+        alertMsg: "logoutSuccess"
+      }
+      }} />;
   }
   
   render() {

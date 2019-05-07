@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 import './Post.css';
 import Card from '@material-ui/core/Card';
 import Navbar from '../Navbar';
+import Alert from './Alert';
 
 
 const styles = theme => ({
@@ -37,10 +38,14 @@ class PostNewForm extends React.Component {
       boardTitle: "",
       id: "",
       error: false,
-      found: true
+      found: true,
+      alertMsg: ""
     }
     
     componentWillMount(){
+      if(this.props.location.state !== undefined) {
+        this.setState({ alertMsg: this.props.location.state.alertMsg });
+      }
         let path = this.props.location.pathname.split("/");
         this.setState({ boardName: path[2] }, () => {
             let url = '/api/b/' + this.state.boardName;
@@ -101,6 +106,7 @@ class PostNewForm extends React.Component {
             }).catch((err) => {
                     console.log("Error creating Board.")
                     console.log(err);
+                    this.setState({ alertMsg: "createPostError" });
             })
       }
 	}
@@ -109,7 +115,7 @@ class PostNewForm extends React.Component {
       if(this.state.created){
         return <Redirect to={{
           pathname: "/b/" + this.state.boardName + "/" + this.state.id, 
-          state: {boardName: this.state.boardName, postId: this.state.id}
+          state: {boardName: this.state.boardName, postId: this.state.id, alertMsg: "createPostSuccess"}
           }} />;
       }
 
@@ -133,6 +139,7 @@ class PostNewForm extends React.Component {
             required
             color="primary"
           />
+          <Alert type={this.state.alertMsg} />
 
           <Card raised className="container newBoardForm my-5 p-5">
             <TextField
