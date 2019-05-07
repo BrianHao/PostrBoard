@@ -13,10 +13,10 @@ export default class Example extends React.Component {
         <Navbar className="justify-content-center" color="dark" dark expand="md">
           <NavbarBrand className="text-center">
             Postr.Board ©2019 Brian Hao
-            <a href="https://github.com/brianhao" className="btn btn-sm btn-outline-info boardbutton mx-0">
+            <a href="https://github.com/brianhao" className="boardbutton mx-0">
 							<i className="fab fa-github mr-1"></i>
 						</a>
-            <a href="https://www.linkedin.com/in/brianhao/" className="btn btn-sm btn-outline-info boardbutton mx-0">
+            <a href="https://www.linkedin.com/in/brianhao/" className="boardbutton mx-0">
 							<i className="fab fa-linkedin mr-1"></i>
 						</a>
             </NavbarBrand>
