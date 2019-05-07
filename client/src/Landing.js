@@ -18,8 +18,8 @@ export default class Landing extends Component {
   };
 
   componentWillMount(){
-    console.log(this.props.location.state);
       if(this.props.location.state !== undefined) {
+        console.log(this.props.location.state.alertMsg);
         this.setState({ alertMsg: this.props.location.state.alertMsg });
       }
 			let url = '/api/';
@@ -85,4 +85,4 @@ export default class Landing extends Component {
         </div>
       );
     }
-}
+} 
