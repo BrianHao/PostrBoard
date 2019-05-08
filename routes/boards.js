@@ -96,7 +96,7 @@ router.delete("/:boardName", (req, res) => {
             res.send(err);
         } else if(removedBoard.posts){
                 removedBoard.posts.forEach((post) => {
-                    Post.findByIdAndRemove(post, (err, removedPost) => {
+                    Post.findByIdAndRemove(post._id, (err, removedPost) => {
                         if(err){
                             console.log(err);
                             res.send(err);
