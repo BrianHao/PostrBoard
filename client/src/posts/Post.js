@@ -114,7 +114,7 @@ export default class Post extends Component {
 			return <Redirect to={{
 				pathname: "/b/" + this.state.postBoard,
           state: {
-            alertMsg: "deletePostSuccess"
+            //alertMsg: "deletePostSuccess"
           }
 				}} />;
     }

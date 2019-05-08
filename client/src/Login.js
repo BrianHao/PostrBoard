@@ -80,7 +80,7 @@ class Login extends React.Component {
         this.setState({ isloggedIn: true, alertMsg: "" });
       }).catch(() => {
         console.log("Wrong Credentials");
-        this.setState({ alertMsg: "loginError" });
+        //this.setState({ alertMsg: "loginError" });
       })    
     }
 	}
@@ -90,7 +90,7 @@ class Login extends React.Component {
         return <Redirect to={{
           pathname: "/",
           state: {
-            alertMsg: "loginSuccess"
+            //alertMsg: "loginSuccess"
           }
           }} />;
       }

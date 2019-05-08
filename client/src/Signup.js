@@ -52,9 +52,10 @@ class Signup extends React.Component {
   
 
   submit = () => {
-    if(this.state.username === "") {
+    if (this.state.username === "") {
       this.setState({ userError: true, passError: false });
-    } else if (this.state.password=== "") {
+    }
+    if (this.state.password=== "") {
       this.setState({ userError: false, passError: true });
     } else {
       fetch('/api/signup', {
@@ -78,7 +79,7 @@ class Signup extends React.Component {
         this.setState({ success: true, alertMsg: "" });
       }).catch(() => {
         console.log("Error creating user");
-        this.setState({ alertMsg: "signupError" });
+        //this.setState({ alertMsg: "signupError" });
       })
     }
 	}
@@ -88,7 +89,7 @@ class Signup extends React.Component {
         return <Redirect to={{
           pathname: "/login",
           state: {
-            alertMsg: "signupSuccess"
+            //alertMsg: "signupSuccess"
           }
           }} />;
       }

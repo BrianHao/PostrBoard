@@ -106,7 +106,9 @@ class PostNewForm extends React.Component {
             }).catch((err) => {
                     console.log("Error creating Board.")
                     console.log(err);
-                    this.setState({ alertMsg: "createPostError" });
+                    this.setState({ 
+                      //alertMsg: "createPostError" 
+                    });
             })
       }
 	}
@@ -115,7 +117,11 @@ class PostNewForm extends React.Component {
       if(this.state.created){
         return <Redirect to={{
           pathname: "/b/" + this.state.boardName + "/" + this.state.id, 
-          state: {boardName: this.state.boardName, postId: this.state.id, alertMsg: "createPostSuccess"}
+          state: {
+            boardName: this.state.boardName, 
+            postId: this.state.id, 
+            //alertMsg: "createPostSuccess"
+            }
           }} />;
       }
 

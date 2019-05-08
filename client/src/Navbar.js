@@ -21,7 +21,7 @@ export default class Example extends React.Component {
 
   logout() {
     sessionStorage.clear();
-    this.props.history.push("/");
+    window.location.reload();
   }
   
   render() {

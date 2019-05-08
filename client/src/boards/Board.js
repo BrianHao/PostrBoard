@@ -106,7 +106,7 @@ export default class Board extends Component {
 			return <Redirect to={{
 				pathname: "/b/",
           state: {
-            alertMsg: "deleteBoardSuccess"
+            //alertMsg: "deleteBoardSuccess"
           }
 
 				}} />;

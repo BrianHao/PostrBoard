@@ -72,12 +72,16 @@ class BoardNewForm extends React.Component {
           if(body.created) {
             this.setState({ created: true, alertMsg: "" });
           } else {
-            this.setState({ error: true, alertMsg: "createBoardError" });
+            this.setState({ error: true, 
+              //alertMsg: "createBoardError" 
+            });
           }
       }).catch((err) => {
             console.log("Error creating Board.")
             console.log(err);
-            this.setState({ alertMsg: "createBoardError" });
+            this.setState({ 
+              //alertMsg: "createBoardError" 
+            });
       })
     }
 	}
@@ -86,7 +90,10 @@ class BoardNewForm extends React.Component {
       if(this.state.created){
         return <Redirect to={{
           pathname: "/b/" + this.state.name, 
-          state: {boardName: this.state.name, alertMsg: "createBoardSuccess"}
+          state: {
+            boardName: this.state.name, 
+            //alertMsg: "createBoardSuccess"
+            }
           }} />;
       }
       
