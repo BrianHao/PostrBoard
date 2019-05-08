@@ -91,7 +91,7 @@ router.delete("/:postId", (req, res) => {
         if(err){
             console.log(err);
             res.send(err);
-        } else {
+        } else if (removedPost.comments) {
             Comment.deleteMany( {_id: { $in: removedPost.comments } }, (err) => {
                 if (err) {
                     console.log(err);
@@ -104,13 +104,14 @@ router.delete("/:postId", (req, res) => {
                         } else {
                             foundBoard.postCount = foundBoard.postCount-1;
                             foundBoard.save();
-                            res.json({
-                                deleted: true,
-                            });
                         }
                     });
                 }
             });
         }
+    }).then(()=> {
+        res.json({
+            deleted: true,
+        });
     });
 });

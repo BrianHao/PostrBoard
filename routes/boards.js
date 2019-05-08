@@ -94,15 +94,13 @@ router.delete("/:boardName", (req, res) => {
         if(err){
             console.log(err);
             res.send(err);
-        } else {
-            if(removedBoard.posts){
-                let posts = removedBoard.posts;
-                posts.forEach((post) => {
+        } else if(removedBoard.posts){
+                removedBoard.posts.forEach((post) => {
                     Post.findByIdAndRemove(post, (err, removedPost) => {
                         if(err){
                             console.log(err);
                             res.send(err);
-                        } else {
+                        } else if(removedPost.comments) {
                             Comment.deleteMany( {_id: { $in: removedPost.comments } }, (err) => {
                                 if (err) {
                                     console.log(err);
@@ -111,8 +109,7 @@ router.delete("/:boardName", (req, res) => {
                             });
                         }
                     });
-                })
-            }
+                });
         }
     }).then(()=> {
         res.json({
