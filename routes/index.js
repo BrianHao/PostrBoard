@@ -7,7 +7,7 @@ const middleware = require("../middleware");
 
 // Landing Page for Postr
 router.get("/", (req, res) => {
-    Post.find({}).sort('created', -1).limit(20).exec((err, foundPosts) => {
+    Post.find({}).sort({created: -1}).limit(10).exec((err, foundPosts) => {
         if(err) {
             console.log(err);
             res.send(err);
