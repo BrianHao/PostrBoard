@@ -74,7 +74,7 @@ export default class Landing extends Component {
             </Button>
 								<hr className="mt-2" />
                 <Typography className=" text-center py-0" color="default" variant="overline" component="h2" >
-              Showing 20 Most Recent Posts
+              Showing 10 Most Recent Posts
               {this.state.alertMsg}
             </Typography>
 								<div className="text-left">
