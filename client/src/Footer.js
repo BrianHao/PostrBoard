@@ -16,10 +16,10 @@ export default class Example extends React.Component {
             
             </NavbarBrand>
             <a href="https://github.com/brianhao" className="boardbutton mx-2">
-							<i className="fab fa-github mr-1"></i>
+							<i className="fab fa-github mx-1"></i>
 						</a>
             <a href="https://www.linkedin.com/in/brianhao/" className="boardbutton mx-0">
-							<i className="fab fa-linkedin mr-1"></i>
+							<i className="fab fa-linkedin mx-1"></i>
 						</a>
         </Navbar>
       </div>

@@ -1,5 +1,4 @@
 // Comment Model
-// Post Model
 const mongoose = require("mongoose");
 
 // SCHEMA SETUP

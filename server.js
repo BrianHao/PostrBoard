@@ -24,7 +24,7 @@ const authRoutes = require('./routes/auth'),
 			postsRoutes = require('./routes/posts'),
 			commentsRoutes = require('./routes/comments');
 
-const seedDB = require('./seed');
+//const seedDB = require('./seed');
 
 const PORT = process.env.PORT || 5000;
 const SECRET = process.env.SECRET || "Recyclable cardboard";
