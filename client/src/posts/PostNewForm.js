@@ -170,7 +170,6 @@ class PostNewForm extends React.Component {
             />
               
             <TextField
-              id="standard-multiline-static"
               multiline
               fullWidth
               rows="4"
