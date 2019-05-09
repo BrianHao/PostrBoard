@@ -149,7 +149,6 @@ class PostNewForm extends React.Component {
 
           <Card raised className="container newBoardForm my-5 p-5">
             <TextField
-              id="standard-full-width"
               fullWidth
               margin="normal"
               label="Title"
@@ -162,7 +161,6 @@ class PostNewForm extends React.Component {
             />
 
             <TextField
-              id="standard-full-width"
               fullWidth
               margin="normal"
               label="Link"

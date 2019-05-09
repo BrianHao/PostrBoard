@@ -112,7 +112,6 @@ class BoardNewForm extends React.Component {
 
           <Card raised className="container newBoardForm my-5 p-5">
             <TextField
-              id="standard-full-width"
               fullWidth
               margin="normal"
               label="Name"
@@ -125,7 +124,6 @@ class BoardNewForm extends React.Component {
             />
 
             <TextField
-              id="standard-full-width"
               fullWidth
               margin="normal"
               label="Title"
@@ -137,7 +135,6 @@ class BoardNewForm extends React.Component {
             />
 
             <TextField
-              id="standard-full-width"
               fullWidth
               margin="normal"
               label="Image"
@@ -148,7 +145,6 @@ class BoardNewForm extends React.Component {
             />
               
             <TextField
-              id="standard-multiline-static"
               multiline
               fullWidth
               rows="4"

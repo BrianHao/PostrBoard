@@ -110,7 +110,6 @@ class Signup extends React.Component {
 
           <Card raised className="container newBoardForm my-5 p-5">
             <TextField
-              id="standard-full-width"
               fullWidth
               margin="normal"
               label="Username"
@@ -123,7 +122,6 @@ class Signup extends React.Component {
             />
 
             <TextField
-              id="standard-full-width"
               fullWidth
               margin="normal"
               label="Password"

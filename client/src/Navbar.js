@@ -6,7 +6,6 @@ import {
   NavItem,
   NavLink } from 'reactstrap';
 import './App.js';
-import { Redirect } from "react-router-dom";
 
 export default class Example extends React.Component {
   state = {
@@ -28,9 +27,9 @@ export default class Example extends React.Component {
 
     return (
       <div>
-        <Navbar color="dark" dark expand="md">
+        <Navbar className="py-0" color="dark" dark expand="md">
         <NavbarBrand className="mr-auto" href="/">
-            <img class="logo mr-2"
+            <img className="logo-header pb-1 mr-2"
               src={require('./images/postr.jpg')}
               alt={"Postr.Board Logo"} />
               Postr.<span className="primary-color">Board</span>

@@ -50,6 +50,14 @@ body {
   color: #3f4bb5;
 }
 
-.logo {
+.logo-header {
   max-height: 32px;
+}
+
+.logo-footer {
+  max-height: 24px;
+}
+
+.footer-text {
+  font-size: 0.8em;
 }

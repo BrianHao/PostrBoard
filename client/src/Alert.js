@@ -1,7 +1,6 @@
 import React from 'react';
 import { UncontrolledAlert } from 'reactstrap';
 import './App.css';
-import { Post } from './posts';
 
 export default function Alert(props) {
   return (
