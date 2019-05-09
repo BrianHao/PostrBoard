@@ -47,7 +47,7 @@ export default class Landing extends Component {
       if (this.state.posts.length > 0) {
         for(let i = 0; i < this.state.posts.length; i++) {
           let currentPost = this.state.posts[i];
-          postsList.unshift(
+          postsList.push(
             <PostCard
               key={currentPost._id} {...currentPost}
             />
