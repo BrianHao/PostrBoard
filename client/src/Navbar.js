@@ -33,7 +33,7 @@ export default class Example extends React.Component {
             <img class="logo mr-2"
               src={require('./images/postr.jpg')}
               alt={"Postr.Board Logo"} />
-            Postr.<span className="primary-color">Board</span>
+              Postr.<span className="primary-color">Board</span>
           </NavbarBrand>
           { this.state.isLoggedIn ? ( //Navbar if user not logged in
             <Nav className="ml-auto inline-item" navbar>
