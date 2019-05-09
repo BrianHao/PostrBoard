@@ -45,3 +45,11 @@ body {
 .inline-item {
   display: inline-block;
 }
+
+.primary-color {
+  color: #3f4bb5;
+}
+
+.logo {
+  max-height: 32px;
+}

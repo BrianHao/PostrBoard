@@ -12,7 +12,10 @@ export default class Example extends React.Component {
       <div className="fixed-bottom">
         <Navbar className="justify-content-center" color="dark" dark expand="md">
           <NavbarBrand className="text-center" href="https://github.com/brianhao">
-            Postr.Board ©2019 Brian Hao
+            <img class="logo mr-2"
+              src={require('./images/postr.jpg')}
+              alt={"Postr.Board Logo"} />
+              Postr.<span className="primary-color">Board</span> ©2019 Brian Hao
             
             </NavbarBrand>
             <a href="https://github.com/brianhao" className="boardbutton mx-2">
