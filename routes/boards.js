@@ -94,7 +94,8 @@ router.delete("/:boardName", (req, res) => {
         if(err){
             console.log(err);
             res.send(err);
-        } else if(removedBoard.posts){
+        } else if (removedBoard.posts){
+            if(removedBoard.posts.length > 0) {
                 removedBoard.posts.forEach((post) => {
                     Post.findByIdAndRemove(post._id, (err, removedPost) => {
                         if(err){
@@ -110,6 +111,7 @@ router.delete("/:boardName", (req, res) => {
                         }
                     });
                 });
+            }
         }
     }).then(()=> {
         res.json({
