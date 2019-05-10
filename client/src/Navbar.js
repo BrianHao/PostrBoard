@@ -21,12 +21,12 @@ export default class Example extends React.Component {
     }
 
   logout() {
-    sessionStorage.clear();
     this.setState({ logout : true });
   }
   
   render() {
     if(this.state.logout){
+      sessionStorage.clear();
       return <Redirect to={{
         pathname: "/",
         state: {

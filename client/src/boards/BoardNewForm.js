@@ -79,14 +79,14 @@ class BoardNewForm extends React.Component {
             this.setState({ created: true, alertMsg: "" });
           } else {
             this.setState({ error: true, 
-              //alertMsg: "createBoardError" 
+              alertMsg: "createBoardError" 
             });
           }
       }).catch((err) => {
             console.log("Error creating Board.")
             console.log(err);
             this.setState({ 
-              //alertMsg: "createBoardError" 
+              alertMsg: "createBoardError" 
             });
       })
     }
@@ -98,7 +98,7 @@ class BoardNewForm extends React.Component {
           pathname: "/b/" + this.state.name, 
           state: {
             boardName: this.state.name, 
-            //alertMsg: "createBoardSuccess"
+            alertMsg: "createBoardSuccess"
             }
           }} />;
       }

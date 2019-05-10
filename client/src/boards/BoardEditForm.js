@@ -105,7 +105,7 @@ class BoardNewForm extends React.Component {
           pathname: "/b/" + this.state.name, 
           state: {
             boardName: this.state.name, 
-            //alertMsg: "editBoardSuccess"
+            alertMsg: "editBoardSuccess"
             }
           }} />;
       }
