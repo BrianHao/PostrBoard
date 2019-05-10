@@ -103,6 +103,7 @@ router.delete("/:postId", (req, res) => {
                             console.log(err);
                         } else {
                             foundBoard.postCount = foundBoard.postCount-1;
+                            foundBoard.posts.pull({_id: req.params.postId});
                             foundBoard.save();
                         }
                     });

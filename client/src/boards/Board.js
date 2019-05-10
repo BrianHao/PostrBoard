@@ -72,6 +72,7 @@ export default class Board extends Component {
 				"Content-Type": "application/json; charset=utf-8",
 			},
 		}).then(response => {
+			console.log(response);
 			if(response.status === 200){
 				//console.log("Succesfully deleted board");
 				this.setState({ deleted: true });
