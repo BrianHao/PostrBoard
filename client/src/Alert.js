@@ -33,6 +33,10 @@ export default function Alert(props) {
             return <UncontrolledAlert color="success">Successfully edited Post!</UncontrolledAlert>;
           case 'deletePostSuccess':
             return <UncontrolledAlert color="success">Successfully deleted Post!</UncontrolledAlert>;
+          case 'createCommentSuccess':
+            return <UncontrolledAlert color="success">Successfully deleted Post!</UncontrolledAlert>;
+          case 'deleteCommentSuccess':
+            return <UncontrolledAlert color="success">Successfully deleted Post!</UncontrolledAlert>;
           default:
             return null;
         }

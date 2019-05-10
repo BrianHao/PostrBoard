@@ -101,7 +101,7 @@ router.delete("/:boardName", (req, res) => {
                         if(err){
                             console.log(err);
                             res.send(err);
-                        } else if(removedPost.comments) {
+                        } else if (removedPost.comments) {
                             Comment.deleteMany( {_id: { $in: removedPost.comments } }, (err) => {
                                 if (err) {
                                     console.log(err);

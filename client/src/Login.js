@@ -52,10 +52,8 @@ class Login extends React.Component {
   
 
   submit = () => {
-    if(this.state.username === "") {
-      this.setState({ userError: true, passError: false });
-    } else if (this.state.password=== "") {
-      this.setState({ userError: false, passError: true });
+    if ((this.state.username === "") || (this.state.password === "")) {
+      this.setState({ userError: true, passError: true, alertMsg: "loginError" });
     } else {
       fetch('/api/login', {
         method: "POST",
@@ -84,7 +82,7 @@ class Login extends React.Component {
         this.setState({ alertMsg: "loginError" });
       })    
     }
-	}
+  }
   
     render() {
       if(this.state.isloggedIn){
