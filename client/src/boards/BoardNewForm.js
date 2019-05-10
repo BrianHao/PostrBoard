@@ -36,7 +36,13 @@ class BoardNewForm extends React.Component {
       image: "",
       error: false,
       alertMsg: ""
-		}
+    }
+    
+    componentWillMount(){
+      this.setState({
+        alertMsg: ""
+      });
+    }
 
   handleChange = name => event => {
     this.setState({

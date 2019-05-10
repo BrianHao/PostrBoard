@@ -41,6 +41,7 @@ class Signup extends React.Component {
     componentWillMount(){
       if(this.props.location.state !== undefined) {
         this.setState({ alertMsg: this.props.location.state.alertMsg });
+        this.props.history.replace({alertMsg: ""});
       }
     }
 
@@ -79,7 +80,7 @@ class Signup extends React.Component {
         this.setState({ success: true, alertMsg: "" });
       }).catch(() => {
         console.log("Error creating user");
-        //this.setState({ alertMsg: "signupError" });
+        this.setState({ alertMsg: "signupError" });
       })
     }
 	}
@@ -89,7 +90,7 @@ class Signup extends React.Component {
         return <Redirect to={{
           pathname: "/login",
           state: {
-            //alertMsg: "signupSuccess"
+            alertMsg: "signupSuccess"
           }
           }} />;
       }

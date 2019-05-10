@@ -111,7 +111,7 @@ class PostNewForm extends React.Component {
           pathname: "/b/" + this.state.postBoard + "/" + this.state.postId, 
           state: {
             boardName: this.state.postBoard, 
-            //alertMsg: "editPostSuccess"
+            alertMsg: "editPostSuccess"
             }
           }} />;
       }

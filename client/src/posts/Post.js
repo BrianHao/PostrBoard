@@ -38,6 +38,7 @@ export default class Post extends Component {
   componentWillMount(){
     if(this.props.location.state !== undefined) {
       this.setState({ alertMsg: this.props.location.state.alertMsg });
+      this.props.history.replace({alertMsg: ""});
     }
 		let path = this.props.location.pathname.split("/");
 		this.setState({ postBoard: path[2], postId: path[3] }, () => {
@@ -114,7 +115,7 @@ export default class Post extends Component {
 			return <Redirect to={{
 				pathname: "/b/" + this.state.postBoard,
           state: {
-            //alertMsg: "deletePostSuccess"
+            alertMsg: "deletePostSuccess"
           }
 				}} />;
     }

@@ -45,6 +45,7 @@ class PostNewForm extends React.Component {
     componentWillMount(){
       if(this.props.location.state !== undefined) {
         this.setState({ alertMsg: this.props.location.state.alertMsg });
+        this.props.history.replace({alertMsg: ""});
       }
         let path = this.props.location.pathname.split("/");
         this.setState({ boardName: path[2] }, () => {
@@ -107,7 +108,7 @@ class PostNewForm extends React.Component {
                     console.log("Error creating Board.")
                     console.log(err);
                     this.setState({ 
-                      //alertMsg: "createPostError" 
+                      alertMsg: "createPostError" 
                     });
             })
       }
@@ -120,7 +121,7 @@ class PostNewForm extends React.Component {
           state: {
             boardName: this.state.boardName, 
             postId: this.state.id, 
-            //alertMsg: "createPostSuccess"
+            alertMsg: "createPostSuccess"
             }
           }} />;
       }
