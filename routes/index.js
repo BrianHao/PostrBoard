@@ -27,7 +27,11 @@ router.post("/signup", function(req, res){
             console.log(err);
             res.send(err);
         }
-        passport.authenticate("local")(req, res, function(){
+        passport.authenticate("local")(req, res, function(err){
+            if(err){
+                console.log(err);
+                res.send(err);
+            }
             res.status(200).json({
                 username: user.username,
                 id: user.id

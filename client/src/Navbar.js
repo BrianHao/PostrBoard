@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from "react-router-dom";
 import {
   Navbar,
   NavbarBrand,
@@ -10,6 +11,7 @@ import './App.js';
 export default class Example extends React.Component {
   state = {
     isLoggedIn : false,
+    logout: false
     }
 
     componentDidMount(){
@@ -20,10 +22,18 @@ export default class Example extends React.Component {
 
   logout() {
     sessionStorage.clear();
-    window.location.reload();
+    this.setState({ logout : true });
   }
   
   render() {
+    if(this.state.logout){
+      return <Redirect to={{
+        pathname: "/",
+        state: {
+          alertMsg: "logoutSuccess"
+        }
+        }} />;
+    }
 
     return (
       <div>
