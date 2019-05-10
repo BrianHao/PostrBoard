@@ -33,6 +33,7 @@ export default class Board extends Component {
   componentWillMount(){
 		if(this.props.location.state !== undefined) {
 			this.setState({ alertMsg: this.props.location.state.alertMsg });
+			this.props.history.replace({alertMsg: ""});
 		}
 		let path = this.props.location.pathname.split("/");
 		this.setState({ name: path[2] }, () => {
@@ -106,7 +107,7 @@ export default class Board extends Component {
 			return <Redirect to={{
 				pathname: "/b/",
           state: {
-            //alertMsg: "deleteBoardSuccess"
+            alertMsg: "deleteBoardSuccess"
           }
 
 				}} />;

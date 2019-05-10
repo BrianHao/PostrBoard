@@ -20,6 +20,7 @@ export default class Landing extends Component {
   componentWillMount(){
       if(this.props.location.state !== undefined) {
         this.setState({ alertMsg: this.props.location.state.alertMsg });
+        this.props.history.replace({alertMsg: ""});
       }
 			let url = '/api/';
 			fetch(url, {
