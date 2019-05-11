@@ -98,10 +98,11 @@ router.delete("/:postId", (req, res) => {
                     res.send(err);
                 } else {
                     Board.findOne({name: req.params.boardName}, (err, foundBoard) => {
-                        if(err) {
+                        if (err) {
                             console.log("Error retrieving Board.")
                             console.log(err);
-                        } else {
+                        } else if (foundBoard !== null){
+                            
                             foundBoard.postCount = foundBoard.postCount-1;
                             foundBoard.save();
                         }
