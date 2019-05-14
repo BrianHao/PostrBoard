@@ -26,12 +26,12 @@ function MediaCard(props) {
           }} 
           style={{ textDecoration: 'none' }}>
             <CardActionArea className="boardbutton row">
-                <CardContent style={styles.card} className="p-0">
-                <Typography  className="mx-3 py-2" color="primary" variant="h6" component="h2" >
+                <CardContent style={styles.card} className="py-0 px-3">
+                <Typography  className="mx-0 py-0" color="primary" variant="h6" component="h2" >
                     {props.title}
                 </Typography>
-                <hr className="my-0 mx-1" />
-                <Typography className="mx-3" inline variant="caption" component="h2">
+                <hr className="my-0 mx-0" />
+                <Typography className="mx-0" inline variant="caption" component="h2">
                     Posted on <strong>{Moment(props.created).format('MMMM Do YYYY, h:mm:ss A')} </strong>
                     in <strong>{props.boardName} </strong> 
                     by <strong>{props.author.username} </strong> 

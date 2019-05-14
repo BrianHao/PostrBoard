@@ -38,7 +38,7 @@ function MediaCard(props) {
       <div className="mx-1 my-3 px-0">
       <Card className="container px-0 gray2">
             <div className="">
-                <CardContent style={styles.card} className="p-0">
+                <CardContent style={styles.card} className="py-0 px-3">
                 <Typography inline className="m-3 py-0" color="default" variant="body1" component="h2" >
                     {props.text}
                 </Typography>
@@ -50,8 +50,8 @@ function MediaCard(props) {
 					</button>
                 </Typography>
                 : "" }
-                <hr className="mb-0 mt-2 mx-1" />
-                <Typography className="mx-3" inline variant="caption" component="h2">
+                <hr className="m-0" />
+                <Typography className="m-0" inline variant="caption" component="h2">
                     Posted <strong>{Moment(props.created).fromNow()} </strong>
                     by <strong>{props.author.username}</strong>.
                 </Typography>
