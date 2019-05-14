@@ -49,7 +49,7 @@ export default class Example extends React.Component {
           { this.state.isLoggedIn ? ( //Navbar if user not logged in
             <Nav className="ml-auto inline-item" navbar>
               <span className="navbar-text ml-auto mr-3 inline-item">
-                Hello, {sessionStorage.getItem('username')}!
+               <i class="fas fa-user"></i> Hello, {sessionStorage.getItem('username')}!
               </span>
               <NavItem className="inline-item">
                 <NavLink onClick={() => this.logout()}>
@@ -60,7 +60,7 @@ export default class Example extends React.Component {
             <Nav className="ml-auto inline-item" navbar>
               <NavItem className="inline-item">
                 <NavLink href="/login/">
-                <i className="fas fa-sign-in-alt mr-2"></i> Log In</NavLink>
+                <i className="fas fa-sign-in-alt"></i> Log In</NavLink>
               </NavItem>
               <NavItem className="inline-item">
                 <NavLink href="/signup/">
