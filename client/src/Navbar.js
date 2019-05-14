@@ -41,7 +41,7 @@ export default class Example extends React.Component {
         <Navbar className="py-0" color="dark" dark expand="md">
         <NavbarBrand className="mr-auto" href="/">
             <img className="logo-header pb-1 mr-2"
-              src={require('./images/postr.jpg')}
+              src={require('./images/Postr.png')}
               alt={"Postr.Board Logo"} />
               Postr.<span className="primary-color">Board</span>
           </NavbarBrand>
