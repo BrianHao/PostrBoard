@@ -39,22 +39,23 @@ function MediaCard(props) {
       <Card className="container px-0 gray2">
             <div className="">
                 <CardContent style={styles.card} className="py-0 px-3">
-                <Typography inline className="m-3 py-0" color="default" variant="body1" component="h2" >
+                <Typography inline className="m-0 py-0" color="default" variant="body1" component="h2" >
                     {props.text}
                 </Typography>
-                { (props.author.username === sessionStorage.getItem('username') || sessionStorage.getItem('username') === 'Admin') ? 
-                <Typography inline className="float-right" color="default" variant="body1" component="h2" >
-                    <button type="button" className="btn btn-sm btn-outline-danger boardbutton p-0 m-1"
-						onClick={() => deleteComment(props)}>
-							<i className="fas fa-times mx-1"></i>
-					</button>
-                </Typography>
-                : "" }
-                <hr className="m-0" />
+                
+                <hr className="mx-0 p-0 my-1s" />
                 <Typography className="m-0" inline variant="caption" component="h2">
                     Posted <strong>{Moment(props.created).fromNow()} </strong>
                     by <strong>{props.author.username}</strong>.
                 </Typography>
+                { (props.author.username === sessionStorage.getItem('username') || sessionStorage.getItem('username') === 'Admin') ? 
+                  <Typography inline className="float-right" color="default" variant="body1" component="h2" >
+                    <button type="button" className="btn btn-sm btn-outline-danger boardbutton p-0 m-1"
+			                onClick={() => deleteComment(props)}>
+							      <i className="fas fa-times mx-1"></i>
+					          </button>
+                  </Typography>
+                : "" }
                 </CardContent>
             </div>
     </Card>
