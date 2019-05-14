@@ -161,9 +161,11 @@ export default class Post extends Component {
 									Link: {this.state.postLink ? <Link href={this.state.postLink} target="_blank">
                     {this.state.postLink} </Link> : "None provided."}
 								</Typography>
+                {this.state.postText === "" ? "" : 
 								<Typography gutterBottom className="border rounded p-2" variant="body1" component="h2">
 									{this.state.postText}
 								</Typography>
+                }
                 <Typography variant="caption" component="h2">
                     Posted on <strong>{Moment(this.state.postCreated).format('MMMM Do YYYY, h:mm:ss A')} </strong>
                     in <strong>{this.state.postBoard} </strong> 
