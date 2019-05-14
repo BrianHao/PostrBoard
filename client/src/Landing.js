@@ -62,7 +62,7 @@ export default class Landing extends Component {
           <HeaderBar 
             backLocation=""
             backText=""
-            centerText="Welcome to Postr.Board"
+            centerText="Welcome"
             newLocation=""
             newText=""
             color="primary"

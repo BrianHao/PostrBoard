@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import 'typeface-roboto';
 import './App.css';
+import PostrLogo from './PostrLogo';
 
 const styles = {
   root: {
@@ -35,7 +36,11 @@ function HeaderBar(props) {
             </Button>
           ) : <Button disabled> </Button> }
           <Typography variant="h4" color="inherit" className={classes.grow}>
-            {props.centerText}
+            {props.centerText === "Welcome" ? 
+              <div>
+                Welcome to <PostrLogo/>
+              </div>
+            : props.centerText}
           </Typography>
           { props.newText ? (
             (sessionStorage.getItem('loggedIn') === "true") ? 

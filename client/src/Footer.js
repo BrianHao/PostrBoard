@@ -3,6 +3,7 @@ import {
   Navbar,
   NavbarBrand
  } from 'reactstrap';
+import PostrLogo from './PostrLogo';
 import './App.js';
 
 export default class Example extends React.Component {
@@ -15,7 +16,8 @@ export default class Example extends React.Component {
             <img className="logo-footer pb-1 mr-2"
               src={require('./images/Postr.png')}
               alt={"Postr.Board Logo"} />
-              Postr.<span className="primary-color">Board</span> <span className="footer-text">©2019 Brian Hao</span>
+              <PostrLogo/>
+              <span className="ml-2 footer-text">©2019 Brian Hao</span>
             
             </NavbarBrand>
             <a href="https://github.com/brianhao" className="boardbutton mx-0">

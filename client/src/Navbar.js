@@ -6,6 +6,7 @@ import {
   Nav,
   NavItem,
   NavLink } from 'reactstrap';
+import PostrLogo from './PostrLogo';
 import './App.js';
 
 export default class Example extends React.Component {
@@ -43,7 +44,7 @@ export default class Example extends React.Component {
             <img className="logo-header pb-1 mr-2"
               src={require('./images/Postr.png')}
               alt={"Postr.Board Logo"} />
-              Postr.<span className="primary-color">Board</span>
+              <PostrLogo/>
           </NavbarBrand>
           { this.state.isLoggedIn ? ( //Navbar if user not logged in
             <Nav className="ml-auto inline-item" navbar>
