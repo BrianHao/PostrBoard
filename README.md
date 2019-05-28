@@ -1,6 +1,9 @@
 # PostrBoard
 PostrBoard is a place to post, share, and discuss things of interest across various topics.
 
+A demo can be found at:
+postrboard.herokuapp.com
+
 ## Created By
 Brian Hao
 
